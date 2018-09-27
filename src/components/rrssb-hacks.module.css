@@ -1,0 +1,9 @@
+/* hacks on rrssb.css */
+.icon {
+  margin-left: 2px !important;
+  transition: 500ms all !important;
+}
+.icon:hover {
+  color: #2c4931 !important;
+}
+
