@@ -4,30 +4,24 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const { createFilePath } = require(`gatsby-source-filesystem`)
 const createPaginatedPages = require('gatsby-paginate')
 var path = require('path')
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` })
-    createNodeField({
-      node,
-      name: `slug`,
-      value: slug
-    })
-  }
+  if (node.internal.type !== `MarkdownRemark`) return
+  createNodeField({
+    node,
+    name: `slug`,
+    value: node.frontmatter.slug
+  })
 }
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const { data } = await graphql(`
     {
-      allMarkdownRemark(sort: {
-        fields: [frontmatter___date]
-        order: DESC
-      }) {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
             id

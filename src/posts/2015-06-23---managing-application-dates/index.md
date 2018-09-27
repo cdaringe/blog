@@ -17,7 +17,7 @@ It doesn't have to be, actually.  The "difficult" aspects of managing time are g
     - **Time is comprised of multiple data components: a geospatial component, and numeric count component**.  It's easy to lose or forget-to-consider the geospatial component.
 - Time is transferred in varying formats, generating sub-system overhead (or errors!)
     - How do you serialize your `date` or `time` objects for sending over the wire?  Is your serialization lossy?  Do your services require knowledge of each others' formats?
-    
+
 ## how do we fix it
 Before we discuss how these issues manifest themselves in an application, let's quickly discuss the general solution.  We need a solution to represent time that does so reliably across:
 
@@ -54,7 +54,7 @@ You could, as some do, use the above integer time value in conjunction with a ti
 Managing this complication is generally unnecessary.  In order to convey a clear, accurate, and complete timestamp, one of which that you can interchange safely across services,  serialize your apps' and services' timestamps in a complete string during I/O, and parse via language natives or time helper libraries as required.
 
 
-```
+```php
 // client makes xhr GET request to server
 xhr.get(..., cb);
 
@@ -62,7 +62,7 @@ xhr.get(..., cb);
 $datetime = new DateTime('now', new DateTimeZone('America/Los_Angeles'));
 echo $datetime->format('c'); // 2015-06-24T09:45:06-07:00
  (ISO 8601)
- 
+
 // client parses. (ex. javascript moment.js)
 var cb = function(response) {
 	// response => 2015-06-24T09:45:06-07:00
@@ -100,11 +100,11 @@ It can be OK for servers to send outbound timestamps normalized to UTC time if:
 Those are tough bullets to gamble over.  You may have not know how your app or ecosystem will change in time.  In a distributed server model, where server activity also needs to be tracked against other servers, UTC normalization may lead to bad consequences!  **Don't normalize to UTC if you have rich TZ data to begin with** and there is possibility that you will want to maintain client locale time in any part of your app!
 
 #### summary
-It's easy to drop critical time data.  It's also very easy to maintain good timestamp data integrity.  When possible, 
+It's easy to drop critical time data.  It's also very easy to maintain good timestamp data integrity.  When possible,
 
 - clear understanding your app's timestamp requirements,
 - use a timestamp standard,
-- avoid time normalization, and 
+- avoid time normalization, and
 - practice lossless timestamp serialization and parsing.
 
 These tips will help yield a healthy app and good time intgrity.  It's a bland topic--thanks for reading!

@@ -41,7 +41,7 @@ const markdown = [
             // right after importing the prism color scheme:
             //  `require("prismjs/plugins/line-numbers/prism-line-numbers.css");`
             // Defaults to false.
-            showLineNumbers: true
+            showLineNumbers: false
           }
         }
       ]

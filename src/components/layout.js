@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import './crisp.css'
-import './crisp-hacks.css'
 import './rrssb.css'
 import './gfm.css'
 import layoutStyles from './layout.module.css'
@@ -32,7 +31,7 @@ const Layout = ({ children }) => (
       <div>
         <Helmet
           title={data.site.siteMetadata.title}
-          meta={[{ name: 'description', content: 'Sample' }, { name: 'keywords', content: 'sample, something' }]}
+          meta={[{ name: 'cdaringe', content: 'cdaringe-blog' }, { name: 'keywords', content: 'cdaringe,blog' }]}
         >
           <link
             href='//fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,300,700'
@@ -84,45 +83,52 @@ const Layout = ({ children }) => (
               </a>
             ))}
           </div>
-          <h6>
+          <h6 style={{ margin: 2 }}>
             <a href='/about'>about</a>
           </h6>
-          <h6>
+          <h6 style={{ margin: 2 }}>
             <a href='https://diary.cdaringe.com/' target='_blank' rel='noopener noreferrer'>
               github diary
             </a>
           </h6>
-          <h6>
+          <h6 style={{ margin: 2 }}>
             <a href='https://redorgreen.org' target='_blank' rel='noopener noreferrer'>
               red-or-green
             </a>
           </h6>
-          <h6>
+          <h6 style={{ margin: 2 }}>
             <a href='https://senorsalsa.org' target='_blank' rel='noopener noreferrer'>
               senor-salsa
             </a>
           </h6>
-          <h6>
+          <h6 style={{ margin: 2 }}>
             <a href='https://dino-dna.github.io/donut' target='_blank' rel='noopener noreferrer'>
               donut
             </a>
           </h6>
-          <h6>
+          <h6 style={{ margin: 2 }}>
             <a href='https://truth.lol' target='_blank' rel='noopener noreferrer'>
               truth.lol
             </a>
           </h6>
         </header>
-        <div
-          style={{
-            margin: '0 auto',
-            maxWidth: 960,
-            padding: '0px 1.0875rem 1.45rem',
-            paddingTop: 0
-          }}
-        >
-          {children}
-        </div>
+        <div>{children}</div>
+        <footer id='footer'>
+          <section id='footer-message'>
+            © {new Date().getFullYear()} cdaringe. I use{' '}
+            <a href='https://www.gatsbyjs.org/' target='_blank' rel='noopener noreferrer'>
+              Gatsby
+            </a>{' '}
+            and a hacked version of{' '}
+            <a href='https://github.com/kathyqian/crisp-ghost-theme' target='_blank' rel='noopener noreferrer'>
+              Crisp
+            </a>{' '}
+            by{' '}
+            <a href='http://kathyqian.com' target='_blank' rel='noopener noreferrer'>
+              kathy
+            </a>. neat-o burrito
+          </section>
+        </footer>
       </div>
     )}
   />
