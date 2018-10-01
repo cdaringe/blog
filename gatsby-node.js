@@ -25,6 +25,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
+            fileAbsolutePath
             frontmatter {
               title
               slug
@@ -42,8 +43,23 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+  const pages = []
+  const posts = []
+  const postsIncubating = []
+  data.allMarkdownRemark.edges.forEach(edge => {
+    const { node } = edge
+    const isPage = node.fileAbsolutePath.match(/pages\/.+\.md/)
+    const isIncubating = node.fileAbsolutePath.match(/posts\.incubating/)
+    if (isPage) {
+      pages.push(edge)
+    } else if (isIncubating) {
+      postsIncubating.push(edge)
+    } else {
+      posts.push(edge)
+    }
+  })
   createPaginatedPages({
-    edges: data.allMarkdownRemark.edges,
+    edges: posts,
     createPage,
     pageTemplate: path.resolve(__dirname, 'src/templates/index.js'),
     pageLength: 10, // This is optional and defaults to 10 if not used

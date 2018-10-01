@@ -112,10 +112,10 @@ const Layout = ({ children }) => (
             </a>
           </h6>
         </header>
-        <div>{children}</div>
+        <div className={layoutStyles.content}>{children}</div>
         <footer id='footer'>
           <section id='footer-message'>
-            © {new Date().getFullYear()} cdaringe. I use{' '}
+            © {new Date().getFullYear()} cdaringe. Built with{' '}
             <a href='https://www.gatsbyjs.org/' target='_blank' rel='noopener noreferrer'>
               Gatsby
             </a>{' '}

@@ -7,11 +7,6 @@ draft: false
 tags: []
 ---
 
-![](./images/cloud-storm-2.png)
-
-_The cloud._  Looks friendly.
-
-
 Deployment of web applications and services can be difficult.  It is often a maze of carefully aligning assets, pulling down & configuring executables, wiring up storage, fidgeting with networks, and more IT/DevOps tasks than most of us care to enjoy.  I have experienced these difficulties enough that I pursued a new deployment strategy to ease my pains.  Here's how I did it.
 
 ## context
@@ -118,7 +113,7 @@ services:
 
 `docker-compose` is now in the deployment stack.
 
-~~**nginx-proxy**~~
+**nginx-proxy**
 
 A major consideration in deploying webservices is _how to expose them_.  If you studied the target deployment diagram above, you will have seen a reverse proxy in front of all of my apps.  **I'm not interested in the underpinnings of a reverse proxy--I just want something that works, and that is relatively plug and play.**  [jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy) is an awesome project designed for hobbyists like you and me!  It:
 
@@ -138,6 +133,7 @@ Unfortunately, there are a ton of bugs.  Also, the user-experience is lacking, w
 **traefik**
 
 <img src="https://cdaringe.com/content/images/2017/05/traefik.logo.png" style="height:120px;margin:auto;display: block;" />
+
 [traefik](https://traefik.io/) is everything `nginx-proxy` was supposed to be and more!  With minimal effort, minimal config, and minimal time, I had a feature rich reverse proxy running.  Let's study some code.
 
 Here's my whole config:
@@ -165,7 +161,7 @@ endpoint = "unix:///var/run/docker.sock"
 domain = "some.domain"
 watch = true
 ```
-In 20 lines, I've told traefic to:
+In 20 lines, I've told traefik to:
 
 - redirect http to https
 - handle all https at this layer only
