@@ -1,8 +1,15 @@
 .logo {
-  animation-name: spin;
   animation-duration: 240000ms;
   animation-iteration-count: infinite;
+  animation-name: spin;
   animation-timing-function: linear;
+  box-shadow: black 0 0 10px;
+  transition: all 100ms;
+}
+
+.logo:hover {
+  animation-duration: 1500ms;
+  box-shadow: black 0 0 40px !important;
 }
 
 @media only screen and (max-width: 800px) {
