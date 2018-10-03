@@ -127,7 +127,7 @@ const Layout = ({ children }) => (
             by{' '}
             <a href='http://kathyqian.com' target='_blank' rel='noopener noreferrer'>
               kathy
-            </a>. neat-o burrito
+            </a>.
           </section>
         </footer>
       </div>

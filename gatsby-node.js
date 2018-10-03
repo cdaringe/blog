@@ -61,7 +61,7 @@ exports.createPages = async ({ graphql, actions }) => {
   createPaginatedPages({
     edges: posts,
     createPage,
-    pageTemplate: path.resolve(__dirname, 'src/templates/index.js'),
+    pageTemplate: path.resolve(__dirname, 'src/components/Index.js'),
     pageLength: 10, // This is optional and defaults to 10 if not used
     pathPrefix: '', // This is optional and defaults to an empty string if not used
     context: {} // This is optional and defaults to an empty object if not used
@@ -69,7 +69,7 @@ exports.createPages = async ({ graphql, actions }) => {
   data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve(`./src/templates/post.js`),
+      component: path.resolve(`./src/components/Post.js`),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.

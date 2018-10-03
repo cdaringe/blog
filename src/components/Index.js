@@ -1,5 +1,5 @@
 import { Link } from 'gatsby'
-import Layout from '../components/layout'
+import Layout from './Layout'
 import React from 'react'
 
 const NavLink = props => {
