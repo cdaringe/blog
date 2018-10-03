@@ -1,5 +1,7 @@
 # blog
 
-## todo
+my blog, viewable at [blog.cdaringe.com](https://blog.cdaringe.com)
 
-- [check out safari ani bug](https://stackoverflow.com/questions/9211261/css3-animation-not-working-in-safari)
+## contributing
+
+see [contributing.md](./contributing.md)
