@@ -2,14 +2,6 @@ import { Link } from 'gatsby'
 import Layout from '../components/layout'
 import React from 'react'
 
-const NavLink = props => {
-  if (!props.test) {
-    return <Link to={props.url}>{props.text}</Link>
-  } else {
-    return <span>{props.text}</span>
-  }
-}
-
 const IndexPage = ({ data, pageContext }) => {
   const { group, index, first, last, pageCount } = pageContext
   const previousUrl = index - 1 === 1 ? '' : (index - 1).toString()
@@ -30,13 +22,21 @@ const IndexPage = ({ data, pageContext }) => {
         </div>
       ))}
       <nav className='pagination'>
-        {!first && <NavLink className='newer-posts' url={previousUrl} text='← Newer' />}
+        {!first && (
+          <Link className='newer-posts' to={previousUrl}>
+            ← Newer
+          </Link>
+        )}
         {!first && <span className='separator'>|</span>}
         <span className='page-number'>
           Page {index} of {pageCount}
         </span>
         {!last && <span className='separator'>|</span>}
-        {!last && <NavLink className='older-posts' url={nextUrl} text='Older →' />}
+        {!last && (
+          <Link className='older-posts' to={nextUrl}>
+            Older →
+          </Link>
+        )}
       </nav>
     </Layout>
   )

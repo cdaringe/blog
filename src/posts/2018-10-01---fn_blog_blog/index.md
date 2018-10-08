@@ -9,14 +9,14 @@ tags: []
 
 - [introduction](#introduction)
 - [migration](#migration)
-    - [capture](#capture)
-    - [convert](#convert)
-    - [configure](#configure)
-        - [import posts](#import-posts)
-        - [creating page entries](#creating-page-entries)
-    - [design](#design)
-        - [`<Layout />` component](#layout--component)
-        - [`<Post />` component](#post--component)
+  - [capture](#capture)
+  - [convert](#convert)
+  - [configure](#configure)
+    - [import posts](#import-posts)
+    - [creating page entries](#creating-page-entries)
+  - [design](#design)
+    - [`<Layout />` component](#layout--component)
+    - [`<Post />` component](#post--component)
 - [conclusion](#conclusion)
 
 
@@ -25,10 +25,10 @@ tags: []
 the following post describes a workflow for migrating a [ghost](https://ghost.org) blog to a [gatsby](https://www.gatsbyjs.org) blog.  before we jump into code, let us quickly review what both of these tools are.
 
 
-`gatsby` is a _fantastic_ static site generator.  TL;DR, it allows you to design static websites using [react](https://reactjs.org), whilst ingesting content from a variety of different input sources--e.g. markdown files, remote apis, json docs, etc.  it exposes your data at development time via graphql, making it easy for you to query, organize, and scaffold your components before they are compiled down to static assets. there are many great static site generators in the wild, but building in react, versus `<some-other-templating-dsl>`, paired with graphql rockets gatsby above and beyond the competition.  gone are the days of jekyll, hugo, or CRA-based blogs.
+`gatsby` is a _fantastic_ static site generator.  _TL;DR_, it allows you to design static websites using [react](https://reactjs.org), whilst ingesting content from a variety of different input sources--e.g. markdown files, remote apis, json docs, etc.  it exposes your data at development time via graphql, making it easy for you to query and scaffold your components before they are compiled down to static assets. there are many great static site generators in the wild, but building in react paired with graphql, versus `<some-other-templating-dsl>`, launches gatsby above and beyond the competition.  gone are the days of jekyll, hugo, or CRA-based blogs.
 
 
-`ghost` is a blogging/content-management platform, which has been used by this website for a few years.  although blogs generally serve static documents, ghost is a server application, not merely a collection of static files. rather, when a user visits a ghost blog, the ghost server builds up a HTML document real-time for each article request.  consequently, ghost requires a runtime (nodejs), a database, and a moderate amount of computer power (often 100MB+ RAM, yikes!).  i'm on a mission to lower my compute footprint for all of my hobby projects.  consequently, i decided to move my ghost content to statically servable content.  because [i already have `nginx` serving static files behind my reverse proxy](https://cdaringe.com/hobbyist-docker-deployment-on-the-web), i already have the infrastructure in place to serve a static site.
+`ghost` is a blogging/content-management platform, which has been used by this website for a few years.  although blogs generally serve static documents, ghost is a server application, not merely a collection of static files. when a user visits a ghost blog, the ghost server builds up a HTML document real-time for each article request.  consequently, ghost requires a runtime (`nodejs`), a database, and a moderate amount of compute power (often 100MB+ RAM--yikes!).  i'm on a mission to lower my compute footprint for all of my hobby projects.  consequently, i decided to move my ghost content to statically servable content.  because [i already have `nginx` serving static files behind my reverse proxy](https://cdaringe.com/hobbyist-docker-deployment-on-the-web), i already have the infrastructure in place to serve a static site.
 
 now that we know what we're dealing with, let's do it!
 
@@ -59,14 +59,14 @@ mv ~/Downloads/ghost-export.json ~/src/blog
 
 ### convert
 
-as it stands, your export is just a `json` file with post content, but it's missing image assets, and isn't in a workable form if you intend to edit to old posts. thus, we will run a command to transform that JSON file into a set of folders containing you posts and images.
+as it stands, your export is just a `json` file with post content, but it's missing image assets, and isn't in a workable form if you intend to edit to old posts. thus, we will run a command to transform that JSON file into a set of folders containing your posts and images.
 
 - install [nodejs](https://nodejs.org), if you haven't already
 - create a folder to drop your new content into: `mkdir -p ~/src/blog/src/posts`
     - i put my post content into `src/posts` to discriminate against other content types, e.g. `src/pages`, etc.
 - run `npx ghost-to-gatsby ~/src/blog/ghost-export.json --out-dir ~/src/blog/src/posts`
 
-great! go ahead and take a peek inside of those generated files.  here's an example:
+great! go ahead and take a peek inside of those generated files.  here's an example snippet:
 
 ```yaml
 # src/posts/2016-01-17---laser-lamps-a-very-maker-christmas/index.md
@@ -85,11 +85,11 @@ tags: []
 files and bill of materials for this blog post may be found on github @ https://github.com/cdaringe/laser-lamp ...
 ```
 
-you will see that in `yaml` style, this markdown document has some frontmatter.  neat.  we can use this section in gatsby to control metadata about our posts.  `ghost-to-gatsby` autogenerated this content for us.  i didn't change mine at all, but edit it as you see fit.  it's worth noting that the conversion tool didn't translate my content 100% perfectly.  some images were not downloaded, and i had to inspect each article in gatsby for a quick smoke check downstream to discover the problems.  the only fixes i needed to do was re-download images from my ghost blog, and patch the markdown files with relative paths to those images.
+you will see that in `yaml` style, this markdown document has some frontmatter.  neat.  we can use this section in gatsby to control metadata about our posts.  `ghost-to-gatsby` auto-generated this content for us.  i didn't change mine at all, but edit it as you see fit.  it's worth noting that the conversion tool didn't translate my content 100% perfectly.  some images were not downloaded, and i had to inspect each article in gatsby for a quick smoke check downstream to discover the problems.  the only fixes i needed to do was re-download images from my ghost blog, and patch the markdown files with relative paths to those images.
 
 ### configure
 
-it's time to setup gatsby. gatsby has _killer_ documentation, and it would be foolish to try and cover it here.  i'm going to assume that you have [installed gatsby](https://www.gatsbyjs.org/docs/) into your `blog` folder, and have a functional `package.json` and set of `gatsby-<*>.js` scripts in that directory.  if you have not installed gatsby yet, no fear.  launch their boilerplate generator commands found in their getting started guide, get a barebones functioning project running, then copy the files into this project (`mv /path/to/boiler/plate/project/* ~/src/blog`).
+it's time to setup gatsby. gatsby has _killer_ documentation, and it would be foolish to try and cover it here.  i'm going to assume that you have [installed gatsby](https://www.gatsbyjs.org/docs/) into your `blog` folder, and have a functional `package.json` and set of `gatsby-<*>.js` scripts in that directory.  if you have not installed gatsby yet, no fear.  launch their boilerplate generator commands found in their getting started guide, get a barebones functioning project running, then copy those files into this project (`mv /path/to/boilerplate/project/* ~/src/blog`).
 
 
 my project roughly looks like this by this point:
@@ -124,7 +124,7 @@ next we need to:
 
 #### import posts
 
-gatsby uses plugins to build up the graphql api, which provides all of your pages data to render.  i installed the following:
+gatsby uses plugins to build up a dev-time only graphql api, which provides your site data to render.  i installed the following:
 
 ```bash
 yarn add \
@@ -140,7 +140,7 @@ once those are installed, [configure them](https://gist.github.com/cdaringe/cc5c
 
 #### creating page entries
 
-part of what makes gatsby so great is that rather than giving you yet-another-DSL or convention to fight against, it instead gives you a concise API to make your pages at will.  you're in control!  making posts is a simple matter of scripting within the `createPages` function.  `createPage` lives in `gatsby-node.js`.  the general form is as follows:
+part of what makes gatsby so great is that rather than giving you yet-another-DSL or convention to fight against, it instead gives you a concise _API_ to make your pages at will.  you're in control!  making posts is a simple matter of scripting within the `createPages` function.  `createPage` lives in `gatsby-node.js`.  the general form is as follows:
 
 ```js
 // gatsby-node.js
@@ -155,7 +155,7 @@ with what data shall we create our post with?  because we just installed a varie
 
 ![](./images/post_query.png)
 
-the markdown plugin extends the `source-filesystem` plugin to offer a variety of fields in the `allMarkdownRemark` edges' nodes.  using `graphiql`, i explored the api and found what i believe to be a sufficiently comprensive set of data to make a post page out of.  take a moment to study the graphql query shown above, as we will reference it below.
+the markdown plugin extends the `source-filesystem` plugin to offer a variety of fields in the `allMarkdownRemark` edges' nodes.  using `graphiql`, i explored the api and found what i believe to be a sufficiently comprehensive set of data to make a post page out of.  take a moment to study the graphql query shown above, as we will reference it below.
 
 let's plug the query into the `createPages` function:
 
@@ -201,7 +201,7 @@ exports.createPages = async ({ graphql, actions }) => {
 }
 ```
 
-great!  now, if you ran the following query:
+great!  now, because we created a bunch of pages, if you ran the following query:
 
 ```gql
 {
@@ -216,7 +216,7 @@ great!  now, if you ran the following query:
 }
 ```
 
-from graphiql, you should see all of the pages in your site!
+from graphiql, you should see all of the pages registered into your site!
 
 ```json
 {
@@ -241,13 +241,13 @@ from graphiql, you should see all of the pages in your site!
 }
 ```
 
-but we aren't done quite yet!
+but we aren't done quite yet!  consider the following concerns:
 
-- `ghost` sites let you make `pages` that _aren't_ strictly posts.  currently, the code above assumes all `.md` files are posts.  we need to discriminate between post pages and other pages.
+- `ghost` sites let you make `pages` that _aren't_ strictly posts.  currently, the code above assumes all `.md` files are posts.  we need to discriminate between post pages and other pages.  let's build all `.md` files, but only show actual `posts` in the paginated body.
 - we want to support pagination to navigate through all of the post entries.
 - we want to support authoring content that is not formally ready to publish.
 
-let's solve these problems in the `creatPages` function as well:
+let's solve these problems in the `createPages` function as well:
 
 ```js
 const createPaginatedPages = require('gatsby-paginate')
@@ -272,7 +272,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   })
   createPaginatedPages({
-    edges: posts,
+    edges: posts, // 👀
     createPage,
     pageTemplate: path.resolve(__dirname, 'src/templates/index.js'),
     pageLength: 10,
@@ -286,6 +286,9 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { slug: node.fields.slug }
     })
   })
+  // @note, in this example we will not do any special processing for `postsIncubating`
+  // or `pages`. they will be created as <Post /> components, but only true `posts`
+  // will be indexed/paginated.
 }
 
 // create url slugs for each markdown post
@@ -312,14 +315,6 @@ import { Link } from 'gatsby'
 import Layout from '../components/layout'
 import React from 'react'
 
-const NavLink = props => {
-  if (!props.test) {
-    return <Link to={props.url}>{props.text}</Link>
-  } else {
-    return <span>{props.text}</span>
-  }
-}
-
 const IndexPage = ({ data, pageContext }) => {
   const { group, index, first, last, pageCount } = pageContext // pagination data, exposed!
   const previousUrl = index - 1 === 1 ? '' : (index - 1).toString()
@@ -342,13 +337,13 @@ const IndexPage = ({ data, pageContext }) => {
         * paginated index page!
         */}
       <nav className='pagination'>
-        {!first && <NavLink className='newer-posts' url={previousUrl} text='← Newer' />}
+        {!first && <Link className='newer-posts' to={previousUrl}>← Newer</Link>}
         {!first && <span className='separator'>|</span>}
         <span className='page-number'>
           Page {index} of {pageCount}
         </span>
         {!last && <span className='separator'>|</span>}
-        {!last && <NavLink className='older-posts' url={nextUrl} text='Older →' />}
+        {!last && <Link className='older-posts' to={nextUrl}>Older →</Link>}
       </nav>
     </Layout>
   )
@@ -467,7 +462,7 @@ we did and will not cover css/styling here.  the reader is on his or her own to 
 
 ## conclusion
 
-let's recap what we've acheived. we have:
+let's recap what we've achieved. we have:
 
 - exported our old ghost site
 - transformed our export into markdown files with local image references
