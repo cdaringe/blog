@@ -23,8 +23,7 @@
     "clean": "rm -rf .build .cache",
     "develop": "gatsby develop",
     "format": "prettier-standard './*.js' 'src/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "precommit": "lint-staged"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "gatsby-paginate": "^1.0.16",
@@ -48,6 +47,11 @@
         "prettier-standard",
         "git add"
       ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
   }
 }
