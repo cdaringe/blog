@@ -7,6 +7,8 @@ draft: false
 tags: []
 ---
 
+the latest code discussed in this post may [be found here](https://github.com/cdaringe/blog).
+
 - [introduction](#introduction)
 - [migration](#migration)
   - [capture](#capture)
@@ -18,7 +20,6 @@ tags: []
     - [`<Layout />` component](#layout--component)
     - [`<Post />` component](#post--component)
 - [conclusion](#conclusion)
-
 
 ## introduction
 
