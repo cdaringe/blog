@@ -112,6 +112,11 @@ const Layout = ({ children }) => (
               truth.lol
             </a>
           </h6>
+          <h6 style={{ margin: 2 }}>
+            <a href='https://upnup.cdaringe.com' target='_blank' rel='noopener noreferrer'>
+              up'n'up
+            </a>
+          </h6>
         </header>
         <div className={layoutStyles.content}>{children}</div>
         <footer id='footer'>
