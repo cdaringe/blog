@@ -27,13 +27,13 @@ exports.createPages = async ({ graphql, actions }) => {
             id
             fileAbsolutePath
             frontmatter {
-              title
-              slug
-              date
-              prettyDate: date(formatString: "MMMM D, YYYY", locale: "us")
-              featured
-              draft
               _PARENT
+              date
+              draft
+              featured
+              prettyDate: date(formatString: "MMMM D, YYYY", locale: "us")
+              slug
+              title
             }
             fields {
               slug
