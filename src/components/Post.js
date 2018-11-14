@@ -5,13 +5,13 @@ import React from 'react'
 
 export default ({ data }) => {
   const post = data.markdownRemark
-  const { prettyDate, title } = post.frontmatter
+  const { prettyDate, title = '' } = post.frontmatter || {}
   return (
     <Layout>
-      <Helmet title={`${title} - cdaringe - blog`} />
+      <Helmet title={`${title}cdaringe - blog`} />
       <div>
         <h1 style={{ marginBottom: 0 }}>{title}</h1>
-        <h6 style={{ margin: '0 0 0.6em 0', fontStyle: 'italic' }}>{prettyDate}</h6>
+        {prettyDate && <h6 style={{ margin: '0 0 0.6em 0', fontStyle: 'italic' }}>{prettyDate}</h6>}
         <div className='markdown-body' dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
     </Layout>
