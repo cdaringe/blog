@@ -410,7 +410,7 @@ there's so much more to do and cover!  in fact, in my [alternate implementation]
 
 regardless, let's summarize. we successfully:
 
-1. create an elm app using create-elm-app
+1. created an elm app using create-elm-app
 2. studied the elm bootstrap sequeunce (`Elm.Main.init` -> `main`)
 3. understood how elm uses pure functions to create Html/Dom nodes
 4. learned how attributes and children can be wired in, using additional functions from the `Html[.*]` modules
