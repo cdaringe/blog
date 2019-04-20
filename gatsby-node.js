@@ -17,32 +17,32 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   })
 }
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
-  const { data } = await graphql(`
-    {
-      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-        edges {
-          node {
-            id
-            fileAbsolutePath
-            frontmatter {
-              _PARENT
-              date
-              draft
-              featured
-              prettyDate: date(formatString: "MMMM D, YYYY", locale: "us")
-              slug
-              title
-            }
-            fields {
-              slug
-            }
-          }
+const PAGE_QUERY = `
+{
+  allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    edges {
+      node {
+        id
+        fileAbsolutePath
+        frontmatter {
+          date
+          draft
+          featured
+          prettyDate: date(formatString: "MMMM D, YYYY", locale: "us")
+          slug
+          title
+        }
+        fields {
+          slug
         }
       }
     }
-  `)
+  }
+}`
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const { data } = await graphql(PAGE_QUERY)
   const pages = []
   const posts = []
   const postsIncubating = []

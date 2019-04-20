@@ -8,6 +8,7 @@
     "gatsby-plugin-manifest": "^2.0.2",
     "gatsby-plugin-offline": "^2.0.5",
     "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-remark-copy-linked-files": "^2.0.5",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
@@ -19,7 +20,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby clean && gatsby build",
     "clean": "rm -rf .build .cache",
     "start": "gatsby develop",
     "format": "prettier-standard './*.js' 'src/**/*.js'",
