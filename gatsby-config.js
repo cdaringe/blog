@@ -52,7 +52,7 @@ const markdown = [
 
 module.exports = {
   siteMetadata: {
-    title: 'cdaringe - blog'
+    title: ' // cdaringe - blog'
   },
   plugins: [
     {
