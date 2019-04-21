@@ -88,6 +88,11 @@ const Layout = ({ children }) => (
             <a href='/about'>about</a>
           </h6>
           <h6 style={{ margin: 2 }}>
+            <a href='https://cowtown.surgh.sh' target='_blank' rel='noopener noreferrer'>
+              cowtown
+            </a>
+          </h6>
+          <h6 style={{ margin: 2 }}>
             <a href='https://diary.cdaringe.com/' target='_blank' rel='noopener noreferrer'>
               github diary
             </a>
