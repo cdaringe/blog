@@ -17,8 +17,8 @@ risks when delivering systems that handle sensitive data.  a cursory glance over
 [owasp top 10](https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf)
 reveals that securing a system is not
 a matter of "installing this" or "turning this feature on."
-rather, securing an application involves auditing and 
-evaluating design patterns, which is often difficult due to 
+rather, securing an application involves auditing and
+evaluating design patterns, which is often difficult due to
 lack of process formalities. row-level security (rls) is
 just one design pattern that can improve part of an
 application's data-security story. we'll explore how.
@@ -46,7 +46,7 @@ router.route("/api/person?fields=birthday", handler)
 @authenticated(roles="member")
 router.route("/api/person?fields=birthday", handler)
 # ^ whoops, this may limit who can access the
-# data to memebers only, but did enforcing 
+# data to memebers only, but did enforcing
 # authentication fix the risk of over-exposure?
 # what about authorization?
 
@@ -59,7 +59,7 @@ def handler():
 ```
 
 in just a few lines of code, we saw a variety of naive places were developers may
-have easily over exposed data.  it's worth noting that there are--more commonly than 
+have easily over exposed data.  it's worth noting that there are--more commonly than
 not--layers in our applications,
 large call stacks separating our entrypoints from our data resolvers. this gap often makes
 validation of the resultant queries difficult. the
@@ -229,7 +229,7 @@ insert into purchases (customer_id, item_id) values
 <small style='display: block;width:100%;text-align: center;'>[c-bear](https://en.wikipedia.org/wiki/C_Bear_and_Jamal), great guy</small>
 
 ### test it out & reflect on our design
- 
+
 now that we have data loaded in, let's test if rls is _really_
 protecting our datas.  let's log into the database with our
 non-super role:
@@ -340,7 +340,7 @@ here's the plan. we will:
     1. postgraphile will add `/graphql` and `/graphiql` routes to the app
         1. now we have many queries (i.e. `select`s) and mutations (i.e. `insert/update`s) ready to roll from the server
     1. we will wire in a feature called `pgSettings`, which ultimately calls postgres' `set_config(...)` function for all of our rls key-values for _each_ query!
-1. start the server and play around 
+1. start the server and play around
 
 the app is so small, here's the whole thing:
 
@@ -383,7 +383,7 @@ const getUser = async (req: IncomingMessage) => {
 
   // @warning - *never actually do this!*
   // for simplicty sake--let's pretend that the
-  // authorized user_id is in the cookie. 
+  // authorized user_id is in the cookie.
   // 1 c-bear, 2 jamal, 3 jessica, 4 chaz
   const cookie = (req.headers.cookie || '')
   const userId = cookie.match(/user_id=(\d+)/i)
@@ -539,7 +539,7 @@ create function get_commerce_user_id() returns int as $$
 	begin
 		user_id_str := current_setting('commerce.user_id', true);
 		if user_id_str is null or user_id_str = '' then
-			return 0; -- postgres serial ids start a 1
+			return 0; -- postgres serial ids start at 1
 		end if;
 		return user_id_str::int;
 	end;

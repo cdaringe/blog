@@ -8,7 +8,7 @@ tags: ["programming", "linux"]
 # cssFiles: ['index.css']
 ---
 
-## discovery 
+## discovery
 
 i recently saw [chunk](https://github.com/koekeishiya/chunkwm) [tiling wm](https://en.wikipedia.org/wiki/Tiling_window_manager) for osx [pass thru hackernews](https://news.ycombinator.com/item?id=19314999). how unfortunate that i had never heard of this type of deeply nerdy, highly pragmatic tool.
 
@@ -41,6 +41,5 @@ that was all! the formal i3 documentation is a must read for users as well.  you
 - the tiling aspect of the wm is surprisingly fun to use
 - tuning xfce to integrate well with i3 wasn't difficult, but involves a non-trivial amount tweaks and complexity
     - in retrospect, this is likely the case anytime one swaps the wm on a system
-- some games don't play nicely with this setup. for instance, some games dominate the screen. i found i wasn't able to swap workspaces or load my game into a workspace, forcing me to _quit_ the game fully if i needed to access some resource, such as chat, during play.  food for thought.
 
 now that i understand why tiling-wm fanboys are such admirers of tiling, i'm eager to adopt chunk on my work osx machine. i don't often recommend complicated system changes to people if they are comfortable with their workflow, but this was worth it, and i _do_ recommend trying it. i look forward to greater productivity and organization by committing myself to this tooling.
