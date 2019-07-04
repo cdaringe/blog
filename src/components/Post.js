@@ -8,7 +8,7 @@ export default ({ data }) => {
   const { prettyDate, title = '' } = post.frontmatter || {}
   return (
     <Layout>
-      <Helmet title={`${title}cdaringe - blog`} />
+      <Helmet title={`${title} - cdaringe - blog`} />
       <div>
         <h1 style={{ marginBottom: 0 }}>{title}</h1>
         {prettyDate && <h6 style={{ margin: '0 0 0.6em 0', fontStyle: 'italic' }}>{prettyDate}</h6>}
