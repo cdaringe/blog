@@ -122,6 +122,11 @@ const Layout = ({ children }) => (
               up'n'up
             </a>
           </h6>
+          <h6 style={{ margin: 2 }}>
+            <a href='https://dvd.js.org?names=han,luke,leia,chewy' target='_blank' rel='noopener noreferrer'>
+              dvd.js.org
+            </a>
+          </h6>
         </header>
         <div className={layoutStyles.content}>{children}</div>
         <footer id='footer'>
