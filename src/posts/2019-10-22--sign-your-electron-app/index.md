@@ -14,7 +14,7 @@ It is assumed that you are using [electron-builder](https://github.com/electron-
 
 ## what we'll cover
 
-- building witn github actions as a ci provider
+- building with github actions as a ci provider
 - building & signing _just_ for osx
 - publishing releases to github releases
 
@@ -41,10 +41,10 @@ jobs:
         node-version: 12.8.0
     - name: install
       run: yarn
-    - name: build
+    - name: build # tsc, for a typescript project
       run: yarn build
     - name: test
-      run: yarn test
+      run: yarn test # ava, jest, whatever
     - name: release
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -85,7 +85,7 @@ Have [this warning](https://stackoverflow.com/questions/55732294/your-account-do
 
 ![](./2fa.png)
 
-Then, **the worst part**, pay _$100!?!_ for an account!?  [Lame sauce](https://news.ycombinator.com/item?id=18260970).
+Now--**the worst part**--pay _$100_ for an account!  [Lame sauce](https://news.ycombinator.com/item?id=18260970).
 
 Fine.  Buy the membership.  It took 15 mintues for my account to process and become active.  Once processed, you can add a `Developer ID` certificate, right click it, and export it.  Add a _strong_ password on export, but avoid special characters as we'll be using it in `bash` build env later.
 
