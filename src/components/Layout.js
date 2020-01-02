@@ -32,7 +32,10 @@ const Layout = ({ children }) => (
       <div>
         <Helmet
           title={data.site.siteMetadata.title}
-          meta={[{ name: 'cdaringe', content: 'cdaringe-blog' }, { name: 'keywords', content: 'cdaringe,blog' }]}
+          meta={[
+            { name: 'cdaringe', content: 'cdaringe-blog' },
+            { name: 'keywords', content: 'cdaringe,blog' }
+          ]}
         >
           <link
             href='//fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,300,700'
@@ -142,7 +145,8 @@ const Layout = ({ children }) => (
             by{' '}
             <a href='http://kathyqian.com' target='_blank' rel='noopener noreferrer'>
               kathy
-            </a>.
+            </a>
+            .
           </section>
         </footer>
       </div>
