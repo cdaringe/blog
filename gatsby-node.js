@@ -9,11 +9,11 @@ const path = require('path')
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
-  if (node.internal.type !== `MarkdownRemark`) return
+  if (node.internal.type !== 'MarkdownRemark') return
   createNodeField({
     node,
-    name: `slug`,
-    value: node.frontmatter.slug
+    name: 'slug',
+    value: node.frontmatter.slug.match(/^\//) ? node.frontmatter.slug : `/${node.frontmatter.slug}`
   })
 }
 
@@ -69,7 +69,7 @@ exports.createPages = async ({ graphql, actions }) => {
   data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve(`./src/components/Post.js`),
+      component: path.resolve('./src/components/Post.js'),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.

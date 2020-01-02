@@ -23,7 +23,7 @@ const IndexPage = ({ data, pageContext }) => {
       ))}
       <nav className='pagination'>
         {!first && (
-          <Link className='newer-posts' to={previousUrl}>
+          <Link className='newer-posts' to={`/${previousUrl}`}>
             ← Newer
           </Link>
         )}
@@ -33,7 +33,7 @@ const IndexPage = ({ data, pageContext }) => {
         </span>
         {!last && <span className='separator'>|</span>}
         {!last && (
-          <Link className='older-posts' to={nextUrl}>
+          <Link className='older-posts' to={`/${nextUrl}`}>
             Older →
           </Link>
         )}

@@ -1,12 +1,12 @@
 const markdown = [
-  `gatsby-plugin-sharp`,
+  'gatsby-plugin-sharp',
   {
-    resolve: `gatsby-transformer-remark`,
+    resolve: 'gatsby-transformer-remark',
     options: {
       plugins: [
         'gatsby-remark-copy-linked-files',
         {
-          resolve: `gatsby-remark-images`,
+          resolve: 'gatsby-remark-images',
           options: {
             // It's important to specify the maxWidth (in pixels) of
             // the content container as this plugin uses this as the
@@ -15,7 +15,7 @@ const markdown = [
           }
         },
         {
-          resolve: `gatsby-remark-prismjs`,
+          resolve: 'gatsby-remark-prismjs',
           options: {
             // Class prefix for <pre> tags containing syntax highlighting;
             // defaults to 'language-' (eg <pre class="language-js">).
@@ -56,16 +56,16 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `src`,
+        name: 'src',
         path: `${__dirname}/src/`
       }
     },
     ...markdown,
     'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'gatsby-starter-default',
         short_name: 'starter',
