@@ -209,7 +209,7 @@ To be able to repeat this geometry-pair later, we can put these entities in a SV
 </g>
 ```
 
-Now we must duplicate and translate the group to complete the hexagon!  `<use />` nodes come to the rescue once more:
+Now we must duplicate and translate the group to complete the hexagon.  `<use />` nodes come to the rescue once more:
 
 ```tsx
 const length = 100 // px
