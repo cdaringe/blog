@@ -15,7 +15,7 @@ tags: ["programming", "svg", "browser", "games", "path", "edit"]
 
 # problem
 
-No FOSS application exists to generate a series of hex-like tessellation tiles, where the output is exportable and guaranteed to _acutally_ tessellate.
+No FOSS application exists to generate a series of hex-like tessellation tiles, where the output is exportable and guaranteed to _actually_ tessellate.
 
 For those who aren't familiar with tessellations:
 
@@ -39,7 +39,7 @@ The source code discussed in this section can be found on github at [cdaringe/d3
 
 Why create a path editor?  We want to create a regular tessellation of hexagon-_like_ shapes.  Painting many simple hexagons is easy and doesn't require a path editor.  However, with an editor we can create much more interesting and beautiful geometries that are certain to delight users.
 
-To paint a tessellating hexagon-like shape, we need to make only one-side editable, and we can repeat that side five more times.
+To paint a tessellating hexagon-like shape, we need to make only one edge editable, and we can repeat that edge five more times.
 
 What requirements do we want in a path editing experience? For this exercise, we will want the ability to:
 
@@ -50,7 +50,7 @@ What requirements do we want in a path editing experience? For this exercise, we
 <br />
 
 
-here's roughly what a path-editing user-experience could look like once rendered:
+Here's roughly what a path-editing user-experience could look like once rendered:
 
 <br />
 <img src='https://github.com/cdaringe/d3-svg-path-editor/blob/master/img/demo.mov.gif?raw=true' style='display: block; margin: auto;' />
@@ -85,7 +85,7 @@ export const fromPoints = (opts: FromPoints) => {
       .attr('fill', 'none')
 
   // listen for mouse events, and when the user's mouse
-  // nears the path, show where a propsed point could be added
+  // nears the path, show where a proposed point could be added
   // to the path. allow a click event to promote a proposed
   // point into the proper set of points in the path!
   const snapper = createNodeSnapper({
@@ -130,15 +130,15 @@ export type MetaNode = {
 }
 ```
 
-A curious reader may also have inquired about the implementation of  `createNodeSnapper`.  How we can feasibly detect when the user's mouse is near an existing path such that we can prompt the user to add a node to it?  Adding nodes is core requirement!
+A curious reader may also have inquired about the implementation of  `createNodeSnapper`.  You can see the snapper at work in the previous animation, where a red line is drawn from the users cursor to a proposed, blue colored circle.  How we can feasibly detect when the user's mouse is near an existing path such that we can prompt the user to add a node?  Adding nodes is core requirement!
 
-Luckily for me, [@mbostock](https://github.com/mbostock) had already [dug into a similar problem](https://bl.ocks.org/mbostock/8027637) and discovered some truly [beautiful maths by @pomax](https://pomax.github.io/bezierinfo/#projections) that explains a heuristic on how to do this.  It involves walking the path in coarse segments (read: _not_ pixel-by-pixel) and computing the distance between the user's cursor and those coarse path points.  Once the nearest point is selected from the sample, a walk + binary search occurs to attempt to find a point to minimize the distance.  You may observe that this doesn't guarantee a perfect solution.  If you sample too coarsely, and your path has some wonky curves in it, your binary search may settle to a non-optimum solution.
+Lucky for me, [@mbostock](https://github.com/mbostock) had already [dug into a similar problem](https://bl.ocks.org/mbostock/8027637) and discovered some truly [beautiful maths by @pomax](https://pomax.github.io/bezierinfo/#projections) that explains a heuristic on how to do this.  It involves walking the path in coarse segments (read: _not_ pixel-by-pixel) and computing the distance between the user's cursor and those coarse path points.  Once the nearest point on the path is selected from the sample, a walk + binary search occurs to attempt to find a point to minimize the distance.  You may observe that this doesn't guarantee a perfect solution.  If you sample too coarsely, and your path has some wonky curves in it, your binary search may settle to a non-optimum solution.
 
 <br />
 
 ![](./snapper_maths.png)
 
-In our implementation, we sample [ten times regardless of the path length](https://github.com/cdaringe/d3-svg-path-editor/blob/eb6208247defa925b6ffadab0b41b50639a02bce/src/point-maths.ts#L64), which is admittedly _very coarse_.  If we use a small sampling length, increasing the path's length _too far_ may have severe performance penalties by inducing excessive distance calculations.  As a counter point, the number of walk iterations also increases by keeping the coarse scan count value _low_.  Math is art.  Surely some more fine tuning could be applied here, but one cannot describe a general, target geometry for all users' paths!  I've found a fixed value of ten works most of the time!
+In our implementation, we sample [ten times regardless of the path length](https://github.com/cdaringe/d3-svg-path-editor/blob/eb6208247defa925b6ffadab0b41b50639a02bce/src/point-maths.ts#L64), which is admittedly _very coarse_.  If we use a small sampling length, increasing the path's length may induce performance penalties through excess distance calculations.  As a counter point, the number of walk iterations also increases by keeping the coarse scan count value _low_.  Math is art.  Surely more fine tuning could be applied here, but one cannot describe a general, target geometry for all users' paths!  I've found a fixed value of ten works well for this use case.
 
 <!--
 https://www.codecogs.com/latex/eqneditor.php
@@ -194,7 +194,7 @@ That's no tessellation.  Indeed, to make this tessellate, we can split that base
 
 ![](./base_shape.png)
 
-To be able to repeat this geo-pair later, we can put these entities in a SVG group `<g>`:
+To be able to repeat this geometry-pair later, we can put these entities in a SVG group `<g>`:
 
 ```tsx
 <g>
@@ -209,7 +209,7 @@ To be able to repeat this geo-pair later, we can put these entities in a SVG gro
 </g>
 ```
 
-Sweet deal!  Now, we must duplicate and translate the group to complete the hexagon!  `<use />` nodes come to the rescue once more:
+Now we must duplicate and translate the group to complete the hexagon!  `<use />` nodes come to the rescue once more:
 
 ```tsx
 const length = 100 // px
@@ -279,7 +279,7 @@ Reload the page, and our editor is loaded!  We can update our segment, and watch
 
 ## tessellate!
 
-When we tessllate hexagons, the units are not oriented in a perfectly square grid--the columns offset from one another.  We can still specify simple, relative units for each unit, e.g.
+When we tessellate hexagons, the units are not oriented in a perfectly square grid--the columns offset from one another.  We can still specify simple, relative units for each unit, e.g.
 
 ```ts
 [[-1, -1], [-1, 0], [0,0], [0,1], [1,1], ..., [n, n]]
