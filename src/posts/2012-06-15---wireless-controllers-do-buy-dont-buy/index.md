@@ -7,7 +7,6 @@ draft: false
 tags: []
 ---
 
-
 do buy:
 
 ![WiFly Module](./images/10822-01.jpg "WiFly Module") WiFly RN-XV — Completely Baller WiFly RN-XV: [http://www.sparkfun.com/products/10822](http://www.sparkfun.com/products/10822)
@@ -21,6 +20,3 @@ don’t buy:
 </td><td>![MICROCHIP2](https://lh6.googleusercontent.com/-KRaecI6XfGE/T9reKaBj6lI/AAAAAAAABcM/itVwpaHGn_w/s692/20120615_000235.jpg "MICROCHIP2") but it’s actually a total jerk!
 
 </td></tr></tbody></table>I don’t personally recommend the MIRCOCHIP MRF24WB0MB 11369ST (or similiar).  It seems as though a handful of WiFi shields use it.  The SPI interface libraries are seriously lame & lacking.  Doug H & I fought them for a few days.  We had compile issues, as well as erratic behavior off the comm pins (o-scoped!).  Most of the shields aren’t immediately ard.MEGA compatible.  Not a big deal, we can remap pins!  But nothing would execute correctly, even after many deep digs into the code, debug, and googling.  Not to mention, the RN-XV is way more capable, and often the same price or cheaper!  If you’re thinking about this chip, abort!
-
-
-

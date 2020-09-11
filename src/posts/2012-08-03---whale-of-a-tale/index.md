@@ -7,10 +7,6 @@ draft: false
 tags: []
 ---
 
-
 I’ll tell ya lad, a whale of a tale or two-hoo!
 
 <iframe allowfullscreen="" frameborder="0" height="480" src="http://www.youtube.com/embed/NXRWdySrjDc?fs=1&feature=oembed" width="640"></iframe>
-
-
-

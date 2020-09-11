@@ -23,8 +23,8 @@
     "clean": "rm -rf .build .cache",
     "start": "gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write '{src,test,scripts}/**/*.{js,jsx,ts,tsx}' './*.{json,js,ts}'",
-    "lint": "prettier --check '{src,test,scripts}/**/*.{js,jsx,ts,tsx}' --fix"
+    "format": "prettier --write '{src,test,scripts}/**/*.{js,jsx,ts,tsx,md,mdx}' './*.{json,js,ts,md,mdx}'",
+    "lint": "prettier --check '{src,test,scripts}/**/*.{js,jsx,ts,tsx,md,mdx}' './*.{json,js,ts,md,mdx}' --fix"
   },
   "devDependencies": {
     "gatsby-paginate": "^1.0.16",

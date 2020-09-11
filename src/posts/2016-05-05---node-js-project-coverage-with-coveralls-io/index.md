@@ -7,11 +7,11 @@ draft: false
 tags: []
 ---
 
-[coveralls.io](www.coveralls.io) is great.  however, the default instruction sets are tailored to ruby and travis.  i use neither.
+[coveralls.io](www.coveralls.io) is great. however, the default instruction sets are tailored to ruby and travis. i use neither.
 
 for many of us, we want coveralls to work with [codeship.io](www.codeship.io) and [nodejs](www.nodejs.com).
 
-the coveralls docs re-direct you to: https://github.com/nickmerwin/node-coveralls, which helps us get the job done.  however, you may like just a simple clear step-by-step.
+the coveralls docs re-direct you to: https://github.com/nickmerwin/node-coveralls, which helps us get the job done. however, you may like just a simple clear step-by-step.
 
 Here are the steps, short and sweet:
 
@@ -30,6 +30,7 @@ Here are the steps, short and sweet:
     }
 }
 ```
+
 - setup your project in coveralls.io
   - log on, follow the add repo instructions (can't miss 'em)
   - copy and paste the secret token--we need to enter this in your codeship build process
@@ -47,7 +48,7 @@ cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
 ![](./codeship-scripts.png)
 
-  - open the environment settings, and set the following keys:
+- open the environment settings, and set the following keys:
 
 ```bash
 COVERALLS_SERVICE_NAME=codeship
@@ -57,7 +58,7 @@ COVERALLS_REPO_TOKEN=YOUR_SECRET_COVERALLS_TOKEN
 ![](./codeship-env.png)
 
 - assuming that you have linked your git project with codeship, simply commit your changes to your package and push!
-- don't forget to add a pretty little badge to your README!  you can copy the markdown syntax from with within your project settings on coveralls.
+- don't forget to add a pretty little badge to your README! you can copy the markdown syntax from with within your project settings on coveralls.
   - please note that it may take a couple of minutes for your badge to render successfully!
 
 ![](./gh-badge.png)

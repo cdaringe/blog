@@ -7,10 +7,8 @@ draft: false
 tags: []
 ---
 
-
 [http://reprap.org/wiki/COssel](http://reprap.org/wiki/COssel)
 
-[![cOssel Frame Up!](./images/20130807_001146.jpg)](./images/20130807_001146.jpg) cOssel Frame Up!  
+[![cOssel Frame Up!](./images/20130807_001146.jpg)](./images/20130807_001146.jpg) cOssel Frame Up!
 
-[![cOssel Corners!](./images/Cossel_corners.jpg)](http://reprap.org/wiki/COssel) cOssel Corners! 
-
+[![cOssel Corners!](./images/Cossel_corners.jpg)](http://reprap.org/wiki/COssel) cOssel Corners!

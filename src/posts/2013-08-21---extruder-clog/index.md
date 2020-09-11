@@ -7,8 +7,6 @@ draft: false
 tags: []
 ---
 
-
 Be weary of dust/dirt/grime building up in your hotend.  A 0.35mm diameter hole is not a large surface area to block up!
 
-[![](./images/IMG_1763.JPG)](./images/IMG_1763.JPG) Clog goop 
-
+[![](./images/IMG_1763.JPG)](./images/IMG_1763.JPG) Clog goop
