@@ -7,9 +7,6 @@ draft: false
 tags: []
 ---
 
-Javascript `callbacks()` can get messy.  When performing many async operations, is there a simple way to state 'when all these things are done' do `this()` or `that()`?  Sure is.  Enter the saving grace of `Promise.all()`.
+Javascript `callbacks()` can get messy. When performing many async operations, is there a simple way to state 'when all these things are done' do `this()` or `that()`? Sure is. Enter the saving grace of `Promise.all()`.
 
 See the demo over at [http://jsfiddle.net/cdaringe/MBEy8/2/](http://jsfiddle.net/cdaringe/MBEy8/4/ "http://jsfiddle.net/cdaringe/MBEy8/4/")
-
-
-

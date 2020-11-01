@@ -7,7 +7,6 @@ draft: false
 tags: []
 ---
 
-
 Look out people.  cOssel is inworks!  COssel’s goal is to be a simple iteration of Kossel, but with:
 
 - Superior documentation
@@ -17,6 +16,3 @@ Look out people.  cOssel is inworks!  COssel’s goal is to be a simple iterat
 [http://reprap.org/wiki/COssel](http://reprap.org/wiki/COssel)
 
 [![cossel_bottom frame](./images/cossel_bottom-frame-295x300.png)](http://static.cdaringe.com/archive/2013/06/cossel_bottom-frame.png)
-
-
-
