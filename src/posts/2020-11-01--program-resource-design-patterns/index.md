@@ -1035,21 +1035,26 @@ study further.
 ### Isn't this just `...`
 
 DI? DIP? FunciontonalCoreImperativeShell? As discussed above, yes and no. GTLT
-is a sum of various of these ideas, wrapped in new language.
+is a sum of various of these ideas, wrapped in new language. Again, GTLT as a
+geometric concept should enable design discussions, using prior art as embedded
+talking points.
 
 > This (program|module) could be more GT _if_ you apply DI in function X.
 
 <!--  -->
+<br />
 
 > This file exhibits some GT violations. 3rd party modules are being imported
 > and used directly by functions Y & Z.
 
 <!--  -->
+<br />
 
 > This module is not side-effect free on load. If you apply some GT refactors
 > here, it would be easier to test. What do you think?
 
 <!--  -->
+<br />
 
 > I'm observing that our application doesn't have a unified approach to getting
 > handles on resources. File A gets a DB handle by doing B, file C gets HTTP
