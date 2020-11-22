@@ -11,8 +11,15 @@ export default ({ data }) => {
       <Helmet title={`${title} - cdaringe - blog`} />
       <div>
         <h1 style={{ marginBottom: 0 }}>{title}</h1>
-        {prettyDate && <h6 style={{ margin: "0 0 0.6em 0", fontStyle: "italic" }}>{prettyDate}</h6>}
-        <div className="markdown-body" dangerouslySetInnerHTML={{ __html: post.html }} />
+        {prettyDate && (
+          <h6 style={{ margin: "0 0 0.6em 0", fontStyle: "italic" }}>
+            {prettyDate}
+          </h6>
+        )}
+        <div
+          className="markdown-body"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
       </div>
     </Layout>
   );

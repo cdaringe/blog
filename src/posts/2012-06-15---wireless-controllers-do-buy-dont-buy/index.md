@@ -9,9 +9,15 @@ tags: []
 
 do buy:
 
-![WiFly Module](./images/10822-01.jpg "WiFly Module") WiFly RN-XV — Completely Baller WiFly RN-XV: [http://www.sparkfun.com/products/10822](http://www.sparkfun.com/products/10822)
+![WiFly Module](./images/10822-01.jpg "WiFly Module") WiFly RN-XV — Completely
+Baller WiFly
+RN-XV: [http://www.sparkfun.com/products/10822](http://www.sparkfun.com/products/10822)
 
-why? it’s cheap, and you can hook all sorts of widgets up to it with almost no trouble at all!  It’s preloaded with a very feature rich f/w and you’ll be off connecting your gidgets to all sorts of neat stuff.  I used it as a simple web client, but also used it to run scan inquires.  Using this little unit was a walk in the park!
+why? it’s cheap, and you can hook all sorts of widgets up to it with almost no
+trouble at all!  It’s preloaded with a very feature rich f/w and you’ll be off
+connecting your gidgets to all sorts of neat stuff.  I used it as a simple web
+client, but also used it to run scan inquires.  Using this little unit was a
+walk in the park!
 
 don’t buy:
 

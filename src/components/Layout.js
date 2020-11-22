@@ -42,8 +42,16 @@ const Layout = ({ children }) => (
             rel="stylesheet"
             type="text/css"
           />
-          <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css" />
-          <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /> */}
+          <link
+            href="//fonts.googleapis.com/css?family=Bree+Serif"
+            rel="stylesheet"
+            type="text/css"
+          />
+          <link
+            href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            rel="stylesheet"
+          />{" "}
+          */}
           <html lang="en" />
         </Helmet>
         {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
@@ -82,7 +90,12 @@ const Layout = ({ children }) => (
                 iconName: "fa-rss-square",
               },
             ].map(({ href, iconName }) => (
-              <a target="_blank" rel="noopener noreferrer" href={href} key={href}>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={href}
+                key={href}
+              >
                 <i className={`fa fa-2x ${iconName} ${followStyles.icon}`} />
               </a>
             ))}
@@ -91,42 +104,74 @@ const Layout = ({ children }) => (
             <a href="/about">about</a>
           </h6>
           <h6 style={{ margin: 2 }}>
-            <a href="https://cowtown.surge.sh" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://cowtown.surge.sh"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               cowtown
             </a>
           </h6>
           <h6 style={{ margin: 2 }}>
-            <a href="https://diary.cdaringe.com/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://diary.cdaringe.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               github diary
             </a>
           </h6>
           <h6 style={{ margin: 2 }}>
-            <a href="https://redorgreen.org" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://redorgreen.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               red-or-green
             </a>
           </h6>
           <h6 style={{ margin: 2 }}>
-            <a href="https://senorsalsa.org" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://senorsalsa.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               senor-salsa
             </a>
           </h6>
           <h6 style={{ margin: 2 }}>
-            <a href="https://dino-dna.github.io/donut" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://dino-dna.github.io/donut"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               donut
             </a>
           </h6>
           <h6 style={{ margin: 2 }}>
-            <a href="https://truth.lol" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://truth.lol"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               truth.lol
             </a>
           </h6>
           <h6 style={{ margin: 2 }}>
-            <a href="https://upnup.cdaringe.com" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://upnup.cdaringe.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               up'n'up
             </a>
           </h6>
           <h6 style={{ margin: 2 }}>
-            <a href="https://dvd.js.org?names=han,luke,leia,chewy" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://dvd.js.org?names=han,luke,leia,chewy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               dvd.js.org
             </a>
           </h6>
@@ -135,15 +180,27 @@ const Layout = ({ children }) => (
         <footer id="footer">
           <section id="footer-message">
             © {new Date().getFullYear()} cdaringe. Built with{" "}
-            <a href="https://www.gatsbyjs.org/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.gatsbyjs.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Gatsby
             </a>{" "}
             and a hacked version of{" "}
-            <a href="https://github.com/kathyqian/crisp-ghost-theme" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/kathyqian/crisp-ghost-theme"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Crisp
             </a>{" "}
             by{" "}
-            <a href="http://kathyqian.com" target="_blank" rel="noopener noreferrer">
+            <a
+              href="http://kathyqian.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               kathy
             </a>
             .

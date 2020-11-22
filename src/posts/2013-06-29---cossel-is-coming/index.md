@@ -7,7 +7,8 @@ draft: false
 tags: []
 ---
 
-Look out people.  cOssel is inworks!  COssel’s goal is to be a simple iteration of Kossel, but with:
+Look out people.  cOssel is inworks!  COssel’s goal is to be a simple iteration
+of Kossel, but with:
 
 - Superior documentation
 - Using OpenRail for linear motion

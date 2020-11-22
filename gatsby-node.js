@@ -13,7 +13,9 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   createNodeField({
     node,
     name: "slug",
-    value: node.frontmatter.slug.match(/^\//) ? node.frontmatter.slug : `/${node.frontmatter.slug}`,
+    value: node.frontmatter.slug.match(/^\//)
+      ? node.frontmatter.slug
+      : `/${node.frontmatter.slug}`,
   });
 };
 
