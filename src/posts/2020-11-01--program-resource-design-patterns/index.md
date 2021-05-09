@@ -1024,8 +1024,8 @@ takeaways were that:
   function verb, and resource curation to satisfy that intent
 - LT code was more compact
 - LT code was less portable
-- LT code high more module coupling, observed by the count of symbol import
-  edges between local modules
+- LT code demonstrated more per-module coupling, observed by the count of symbol
+  import edges between local modules
 
 Feel free to head to the [citrus source](https://github.com/cdaringe/citrus) to
 study further.
@@ -1052,15 +1052,6 @@ talking points.
 
 > This module is not side-effect free on load. If you apply some GT refactors
 > here, it would be easier to test. What do you think?
-
-<!--  -->
-<br />
-
-> I'm observing that our application doesn't have a unified approach to getting
-> handles on resources. File A gets a DB handle by doing B, file C gets HTTP
-> resources via D, and file E gets references to gRPC calls via F. There isn't a
-> uniform approach, and I find it difficult to reason about how to add
-> functionality when there isn't a uniform pattern. Could applying GT help?
 
 ### If GTLT had a function signature, what would it be
 
