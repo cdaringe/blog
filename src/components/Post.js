@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 import Layout from "./Layout";
 import React from "react";
 
-export default ({ data }) => {
+export default function Post({ data }) {
   const post = data.markdownRemark;
   const { prettyDate, title = "" } = post.frontmatter || {};
   return (
@@ -23,7 +23,7 @@ export default ({ data }) => {
       </div>
     </Layout>
   );
-};
+}
 
 export const query = graphql`
   query($slug: String!) {

@@ -20,7 +20,9 @@ sections to learn about me.
 
 I am an engineer in Portland, OR, currently employed as a
 
-1. Senior Software Engineer at [Tripwire](https://www.tripwire.com/)
+1. Fancy Titled Engineer at [WalmartLabs](https://www.walmartlabs.com/)
+1. ~~Manager at [WalmartLabs](https://www.walmartlabs.com/)~~
+1. ~~Senior Software Engineer at [Tripwire](https://www.tripwire.com/)~~
 1. ~~Software Engineer at [The Mind Research Network](https://www.mrn.org/)~~
 1. ~~Automation/Test Engineer
    at [LAM Research Corporation](https://www.lamrc.com/ "LAM Research Corporation")~~
