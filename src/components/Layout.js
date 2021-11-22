@@ -4,15 +4,15 @@ import logo from "../images/logo.png";
 import PropTypes from "prop-types";
 import React from "react";
 
-import "./crisp.css";
 import "./rrssb.css";
+import "./crisp.css";
 import "./gfm.css";
 import "./gfm-hacks.css";
 import * as layoutStyles from "./layout.module.css";
 import * as followStyles from "./rrssb-hacks.module.css";
 import ProjectLink from "./ProjectLink";
 import SocialIcon from "./SocialIcon";
-import { Emoji } from "./Emoji";
+// import { Emoji } from "./Emoji";
 
 // <a target="_blank" href="http://instagram.com/username"><i className="fa fa-instagram fa-2x"></i></a>
 // <a target="_blank" href="http://vimeo.com/username"><i className="fa fa-vimeo-square fa-2x"></i></a>
@@ -85,15 +85,15 @@ function Layout({ children }) {
                   href: "mailto:cdaringe@gmail.com",
                   iconName: "fa-envelope-square",
                 },
-                {
-                  href: "http://blog.cdaringe.com/rss",
-                  iconName: "fa-rss-square",
-                },
+                // {
+                //   href: "http://blog.cdaringe.com/rss",
+                //   iconName: "fa-rss-square",
+                // },
               ].map((props) => (
                 <SocialIcon {...{ ...props, iconClass: followStyles.icon }} />
               ))}
             </div>
-            <h6 style={{ margin: 2 }}>
+            <h6>
               <a href="/about">about</a>
             </h6>
             {[
@@ -102,6 +102,7 @@ function Layout({ children }) {
               ["https://dvd.js.org?names=han,luke,leia,chewy", "dvd.js.org"],
               ["https://senorsalsa.org", "senor-salsa"],
               ["https://cowtown.surge.sh", "cowtown"],
+              ["https://cdaringe.github.io/standup/", "standup"],
               ["https://diary.cdaringe.com/", "github diary"],
               ["https://dino-dna.github.io/donut", "donut"],
               ["https://truth.lol", "truth.lol"],
@@ -109,6 +110,10 @@ function Layout({ children }) {
               [
                 "https://cdaringe.github.io/factorio-type-kit/",
                 "factorio-type-kit",
+              ],
+              [
+                "https://fish.js.org/?names=cdaringe,your-name-here,your-best-friend,your-mom",
+                "fish.js.org",
               ],
             ].map(([href, children]) => (
               <ProjectLink {...{ href, children }} />

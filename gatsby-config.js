@@ -1,9 +1,9 @@
 const markdown = [
-  "gatsby-plugin-sharp",
   {
     resolve: "gatsby-transformer-remark",
     options: {
       plugins: [
+        // "gatsby-plugin-feed",
         "gatsby-remark-copy-linked-files",
         {
           resolve: "gatsby-remark-images",
@@ -60,6 +60,9 @@ module.exports = {
     title: " // cdaringe - blog",
   },
   plugins: [
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
       options: {

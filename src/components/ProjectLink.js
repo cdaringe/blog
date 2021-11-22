@@ -9,7 +9,7 @@ export default function ProjectLink({
 }) {
   return (
     <>
-      <h6 style={{ margin: 2 }}>
+      <h6>
         <a
           target="_blank"
           rel="noopener noreferrer"

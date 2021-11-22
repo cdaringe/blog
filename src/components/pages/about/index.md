@@ -63,21 +63,15 @@ in the college of Mechanical, Industrial, and Manufacturing Engineering.
 
 ## work philosophy
 
-I strongly value the opportunity to work.  I believe that work is a fundamental
-and natural activity for daily life, _not_ a habitual chore.  I also believe
-that the most fulfilling work is activity that lifts or supports the community.
- I have been privileged with many blessings, including an excellent education
-and professional support network, thus, I have been able to work in jobs that I
-believe fulfill my 'community uplift' criteria.  I do not regard many industries
-to be truly “value-add” to our society, and in these sectors I hold no
-professional interest.  For example, the prospect of working for a toy
-manufacturer does not entice me.  Nor does working for a common financial
-institution, such as a bank.  Although these two example organizations may fill
-a reasonable demand, their output is not one that I see as truly beneficial to
-humanity.  Research firms, design/engineering firms, manufacturing firms, and
-even consulting firms are where I believe value is generated for us, both
-financially as a society, but also as a source of improving our quality of life.
- It is here that I have worked, desired to work, and will continue to work.
+I strongly value the opportunity to work.  I believe that work is an
+opportunity, not a chore.  I also believe that the most fulfilling work is that
+which supports the community.  I have been privileged to receive an excellent
+education and build an excellent professional support network, thus, I have been
+able to work in jobs that I believe fulfill my 'community uplift' criteria.  I
+do not regard many industries to be value-add, and in these sectors I hold no
+professional interest.  Research firms, design firms, manufacturing firms, and
+even consulting firms are where I believe value is generated for us as a
+society. It is in these industries that I have worked and will continue to work.
 
 <a name="volunteer"></a>
 
@@ -89,25 +83,26 @@ Off hours, you will observe me most easily as a cyclist, as a geek, and
 certainly as keeping
 [Portland Weird](https://en.wikipedia.org/wiki/Keep_Portland_Weird). The sun
 does not come out much in Oregon, but lack of sunshine has not deterred me from
-a significant amount of road, mountain, and cyclocross bicycle riding/racing in
-the past 15 years.  I have been on teams, clubs, and ridden independently.   I
-was once heavily involved in the [reprap](www.reprap.org "RepRap") community,
-building documentation, helping novices get their machines running, and
-“wow-ing” middle-school students & friends with the simplicity of
-[FFF](https://reprap.org/wiki/Fused_filament_fabrication "FFF") 3d printing. In
+a significant amount of road, mountain, and cyclocross riding.  I have been on
+teams, clubs, and ridden independently.   I was previously heavily involved in
+the [reprap](www.reprap.org "RepRap") community, building documentation, models,
+firmware, & helping novices get their machines running. I still love to “wow"
+students & friends with the simplicity of
+[FFF](https://reprap.org/wiki/Fused_filament_fabrication "FFF") printing. In
 2013, I published my own printer design, including the full CAD and build
 instructions under the
 [OpenHardware](https://en.wikipedia.org/wiki/Open-source_hardware) philosophy.
 Check out my machine, [cOssel](https://reprap.org/wiki/COssel)! Of course, as a
 software geek, I spend a great deal of time
-[hacking away on projects](https://www.github.com/cdaringe) as well. I am an
-[AmpersandJS Core Team](https://ampersandjs.com/) member and I enjoy programming
-in NodeJS and the browser.
+[hacking away on projects](https://www.github.com/cdaringe) as well. I was
+previously active on the [AmpersandJS Core Team](https://ampersandjs.com/), and
+still partner regularly with local advocacy groups, such as
+[Portland Clean Air](http://pdxcleanair.org).
 
 ## resume & references
 
 <a name="resume"></a> To download my resume in .pdf format, please
-[click here](https://static.cdaringe.com/Dieringer_Chris_Resume_18.pdf).
+[click here](https://static.cdaringe.com/Dieringer_Chris_Resume_latest.pdf).
 
 Due to privacy issues, please contact me directly to obtain references.
 
