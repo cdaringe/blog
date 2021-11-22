@@ -22,7 +22,7 @@ ocaml bootstrapping tips.
 - For help,
   [ocaml#beginners](https://discuss.ocaml.org/t/ocaml-discord-server/1884)
 
-Do both.
+Do all.
 
 ## How do I install ocaml?
 
@@ -47,8 +47,8 @@ Straight up, https://dev.realworldocaml.org/install.html.
 
 There are various compilers. `ocamlc`, `ocamlbuild`, `ocamlopt`, whatever.
 
-**Stop. Use `dune`** in 2020. Who knows how this post will age, but start with
-`dune`. Don't bother consider looking at the others.
+**Just use `dune`** in 2020. Who knows how this post will age, but start with
+`dune`. Don't bother looking at the others.
 
 ## How do I compile to native-code vs byte-code, or vice-versa?
 
@@ -134,11 +134,14 @@ Start with PCRE if you want for ease of learning.
 There is a standard library, it is only ok.
 
 JaneStreet `base` and `core` seem to be the go to std libary replacements. And
-they literally do _replace_--override--aspects of the default standard library,
-versus an module that has no effect on your build. Don't expect to be able to
-have written some ocaml using the standard library, then bring in one of these
-and have things just continue to work--some minor refactors may be required.
-Install them from `opam`, per usual.
+they quite literally do replace sections of the standard library, versus a
+module that has no effect on your build. Candidly, I find this behavior
+offensive. Don't expect to be able to have written some ocaml using the standard
+library, then bring in one of these and have things just continue to work--some
+minor refactors may be required. Install them from `opam`, per usual.
+
+Edit: non-mutating stdlib replacement modules are available as well, such as
+`containers` or `batteries`.
 
 ## How do I debug my OCaml program?
 
@@ -146,6 +149,8 @@ As far as I know--you don't. `printf`? I've seen some hints that there may be
 tooling for emacs users? I've looked at the VSCode extensions, and there are
 some promising work out there, but they aren't compatible with `ocaml@latest` at
 the time of writing.
+
+Edit: https://opam.ocaml.org/packages/earlybird/
 
 ## Is there an caml emoji?
 
