@@ -263,7 +263,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
 great! now, because we created a bunch of pages, if you ran the following query:
 
-```gql
+```graphql
 {
   allSitePage {
     edges {
@@ -386,20 +386,22 @@ const IndexPage = ({ data, pageContext }) => {
   const nextUrl = (index + 1).toString();
   return (
     <Layout>
-      {group.map((
-        { node } // group contains meta about _each_ post!
-      ) => (
-        <div key={node.id} className="post blogListing">
-          <h3 className="post-title">
-            <Link className="blogUrl" to={node.fields.slug}>
-              {node.frontmatter.title}
-            </Link>
-            <span className="separator"> · </span>
-            {node.frontmatter.prettyDate}
-          </h3>
-          <div>{node.excerpt}</div>
-        </div>
-      ))}
+      {group.map(
+        (
+          { node } // group contains meta about _each_ post!
+        ) => (
+          <div key={node.id} className="post blogListing">
+            <h3 className="post-title">
+              <Link className="blogUrl" to={node.fields.slug}>
+                {node.frontmatter.title}
+              </Link>
+              <span className="separator"> · </span>
+              {node.frontmatter.prettyDate}
+            </h3>
+            <div>{node.excerpt}</div>
+          </div>
+        )
+      )}
       {/* with the pagination metadata, we can build in custom controls for each
        * paginated index page!
        */}
@@ -524,7 +526,7 @@ export default ({ data }) => {
 // this query is run onbuild for each post, and is passed to the above component
 // for rendering
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {

@@ -58,7 +58,7 @@ Read the [dune](https://dune.readthedocs.io/en/stable/quick-start.html) docs.
 
 1. Create a test application:
 
-```dune
+```lisp
 ;dune
 ;...snip
 (test
@@ -70,7 +70,7 @@ Read the [dune](https://dune.readthedocs.io/en/stable/quick-start.html) docs.
 Ensure that you add your testing library/runner and the associated library you
 want to test. Obnoxiously, because you may have a heirarchy as such:
 
-```sh
+```bash
 $ ls -l
 dune
 yourmodule.ml
@@ -82,7 +82,7 @@ target.
 
 For example, for a layout like:
 
-```sh
+```bash
 $ ls -l
 dune
 Replacements.ml
@@ -92,7 +92,7 @@ test.ml
 
 my dune file looks simliar to:
 
-```dune
+```lisp
 (library
  ...
  (modules replacements))
