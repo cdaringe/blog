@@ -1,17 +1,17 @@
 ---
 title: ".:about"
 slug: "/about"
-date: "2012-05-10T14:13:23.000Z"
+date: "2021-11-22T00:00:00.000Z"
 featured: true
 draft: false
 tags: []
 ---
 
-<a class="img-link" href="https://static.cdaringe.com/archive/2012/05/634752768398.jpg"><img src="https://static.cdaringe.com/archive/2012/05/634752768398-150x150.jpg" class="img-frame float-right" width="150" height="150" /></a>
+<a class="img-link" href="https://static.cdaringe.com/c/pub/img/headshot.jpeg"><img src="https://static.cdaringe.com/c/pub/img/headshot.jpeg" class="img-frame float-right" width="150" height="150" /></a>
 
 # welcome
 
-Howdy! Thank you for taking the time to visit!  Please see the following the
+Greetings! Thank you for taking the time to visit!  Please see the following the
 sections to learn about me.
 
 <a name="pro"></a>
@@ -36,26 +36,25 @@ manufacturing engineering.
 <a name="edu"></a>
 
 Education is a deep core value of mine. A strong foundation in academic
-principles is an essential, defining characteristic of an engineer. I have
-actively sought out technical knowledge and wisdom in my career, and have
-achieved the following:
+principles is a defining characteristic of an engineer. I have actively sought
+out technical knowledge and wisdom in my career, and have achieved the
+following:
 
 1. **MS Computer Science** (Georgia Institute of Technology, 4.0, 2018)
-1. **BS Computer Science (equivalent, no capstone)** (Portland State University,
+2. **BS Computer Science (equivalent, no capstone)** (Portland State University,
    3.8, 2014)
-1. **BS Industrial Engineering** (Oregon State University, 3.92, 2010)
-1. **BS Manufacturing Engineering** (Oregon State University, 2010)
-1. **Business & Entrepreneurship Minor** (Oregon State University, 3.92, 2010)
+3. **BS Industrial Engineering** (Oregon State University, 3.92, 2010)
+4. **BS Manufacturing Engineering** (Oregon State University, 2010)
+5. **Business & Entrepreneurship Minor** (Oregon State University, 3.92, 2010)
 
-My completion of the MSCS degree is a direct reflection of my existing expertise
-and commitment to excellence in software design. I have a passion for the craft,
-and want to produce the best quality work that I can.
+My completion of a masters degree is a direct reflection of my existing
+expertise and commitment to excellence in software design. I have a passion for
+the craft, and want to produce the best quality work that I can.
 
 I completed my Industrial, Manufacturing, and business certifications at
 [Oregon State University](https://oregonstate.edu/) back in 2010.  I finished
 with honors, a 3.92 GPA, and two
-successful [MECOP](https://www.mecopinc.org/ "MECOP") internships.  I was also
-awarded
+[MECOP](https://www.mecopinc.org/ "MECOP") internships.  I was also awarded
 **[most outstanding senior](https://www.youtube.com/watch?v=3KeZ0OfJLZM "outstanding senior")**
 in the college of Mechanical, Industrial, and Manufacturing Engineering.
 
@@ -63,15 +62,15 @@ in the college of Mechanical, Industrial, and Manufacturing Engineering.
 
 ## work philosophy
 
-I strongly value the opportunity to work.  I believe that work is an
-opportunity, not a chore.  I also believe that the most fulfilling work is that
-which supports the community.  I have been privileged to receive an excellent
-education and build an excellent professional support network, thus, I have been
-able to work in jobs that I believe fulfill my 'community uplift' criteria.  I
-do not regard many industries to be value-add, and in these sectors I hold no
+I strongly value the opportunity to work.  I believe that work is an privilege,
+not a chore.  I also believe that the most fulfilling work is that which
+supports the community.  I have been lucky to receive an excellent education and
+to have built an excellent professional support network, thus, I have been able
+to work in jobs that I believe fulfill my 'community uplift' criteria.  I do not
+regard many industries to be value-add, and in these sectors I hold no
 professional interest.  Research firms, design firms, manufacturing firms, and
-even consulting firms are where I believe value is generated for us as a
-society. It is in these industries that I have worked and will continue to work.
+even consulting firms are where I believe value is generated for society. It is
+in these industries that I have worked and will continue to work.
 
 <a name="volunteer"></a>
 
