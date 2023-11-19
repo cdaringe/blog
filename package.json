@@ -4,13 +4,15 @@
   "version": "0.0.1",
   "author": "cdaringe",
   "dependencies": {
+    "@mdx-js/react": "^2.0.0",
     "@parcel/core": "2.8.3",
     "ajv": "^6.12.6",
     "gatsby": "^5.12.9",
     "gatsby-paginate": "^1.1.1",
     "gatsby-plugin-image": "^3.12.3",
     "gatsby-plugin-manifest": "^5.12.3",
-    "gatsby-plugin-react-helmet": "^6.12.0",
+    "gatsby-plugin-mdx": "^5.12.3",
+    "gatsby-plugin-page-creator": "^5.12.3",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-sharp": "^5.12.3",
     "gatsby-remark-copy-linked-files": "^6.12.0",
@@ -33,12 +35,16 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby clean && gatsby build",
-    "clean": "rm -rf .build .cache",
+    "prebuild": "npm run clean",
+    "build": "gatsby build",
+    "bd": "DEBUG=1 gatsby build",
+    "predevelop": "npm run clean",
+    "develop": "gatsby clean && gatsby develop",
+    "clean": "gatsby clean",
     "start": "gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write '{src,test,scripts}/**/*.{js,jsx,ts,tsx,md,mdx}' './*.{json,js,ts,md,mdx}'",
-    "lint": "prettier --check '{src,test,scripts}/**/*.{js,jsx,ts,tsx,md,mdx}' './*.{json,js,ts,md,mdx}' --fix"
+    "lint": "eslint . --ext js,md,mdx && prettier --check '{src,test,scripts}/**/*.{js,jsx,ts,tsx,md,mdx}' './*.{json,js,ts,md,mdx}' --fix"
   },
   "repository": {
     "type": "git",
@@ -55,5 +61,10 @@
       "yarn lint",
       "git add"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.54.0",
+    "eslint-plugin-mdx": "^2.2.0",
+    "eslint-plugin-react": "^7.33.2"
   }
 }

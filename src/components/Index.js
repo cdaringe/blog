@@ -2,7 +2,9 @@ import { Link } from "gatsby";
 import Layout from "./Layout";
 import React from "react";
 
-const IndexPage = ({ data, pageContext }) => {
+export { Head } from "./Head";
+
+const IndexPage = ({ data: _data, pageContext }) => {
   const { group, index, first, last, pageCount } = pageContext;
   const previousUrl = index - 1 === 1 ? "" : (index - 1).toString();
   const nextUrl = (index + 1).toString();
@@ -10,9 +12,8 @@ const IndexPage = ({ data, pageContext }) => {
     <Layout>
       {group.map(({ node }) => (
         <div key={node.id} className="post blogListing">
-          {/* <div className="date">{node.frontmatter.date}</div> */}
           <h3 className="post-title">
-            <Link className="blogUrl" to={node.fields.slug}>
+            <Link className="blogUrl" to={node.frontmatter.slug}>
               {node.frontmatter.title}
             </Link>
             <span className="separator"> · </span>

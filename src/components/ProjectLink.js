@@ -1,5 +1,5 @@
 import React from "react";
-import { Emoji } from "./Emoji";
+import Emoji from "./Emoji.js";
 
 export default function ProjectLink({
   children,
