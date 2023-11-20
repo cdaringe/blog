@@ -60,23 +60,9 @@ const mdx = [
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `posts`,
-      path: `${__dirname}/src/posts`,
+      path: `${__dirname}/src/`,
     },
   },
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `pag3s`,
-      path: `${__dirname}/src/pages`,
-    },
-  },
-  // we don't want react components as pages?
-  // {
-  //   resolve: `gatsby-plugin-page-creator`,
-  //   options: {
-  //     path: `${__dirname}/src/pages/`,
-  //   },
-  // },
 ];
 
 /** @type {import("gatsby").GatsbyConfig} */
@@ -86,17 +72,10 @@ const config = {
     title: " // cdaringe - blog",
   },
   plugins: [
-    ...mdx,
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
-    // {
-    //   resolve: "gatsby-source-filesystem",
-    //   options: {
-    //     name: "src",
-    //     path: `${__dirname}/src/`,
-    //   },
-    // },
+    ...mdx,
     {
       resolve: "gatsby-plugin-manifest",
       options: {

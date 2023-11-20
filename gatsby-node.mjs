@@ -56,7 +56,10 @@ export const createPages = async ({ graphql, actions, reporter }) => {
     (acc, edge) => {
       const { node } = edge;
       acc.allNodes.push(edge.node);
-      const isPage = node.internal.contentFilePath.includes("src/pages");
+      // for whatever reason, all pages have to be sourced from the same root,
+      // otherwise gatsby just does really weird stuff without erroring during generation
+      // distinguish pages with a _
+      const isPage = node.internal.contentFilePath.match("posts/_");
       if (isPage) {
         acc.pages.push(edge);
       } else {
@@ -79,9 +82,6 @@ export const createPages = async ({ graphql, actions, reporter }) => {
       frontmatter: { slug },
       id,
     } = node;
-    if (!id || !slug) {
-      throw new Error(`invalid node: ${JSON.stringify(node)}`);
-    }
 
     const componentFilename = path.resolve(
       __dirname,
