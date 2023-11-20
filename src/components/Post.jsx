@@ -3,23 +3,13 @@ import Helmet from "react-helmet";
 import Layout from "./Layout";
 import React from "react";
 import { MDXProvider } from "@mdx-js/react";
-
 export { Head } from "./Head";
 
-const Caption = ({ children, style, ...rest }) => (
-  <small
-    style={{ display: "block", width: "100%", textAlign: "center", ...style }}
-    {...rest}
-  >
-    {children}
-  </small>
-);
+import Caption from "./Caption";
+import Img from "./Img";
+import ImgLink from "./ImgLink";
 
-const Img = ({ style, ...rest }) => (
-  <img style={{ margin: "auto", display: "block", width: "50%" }} {...rest} />
-);
-
-const shortcodes = { Caption, Img };
+const shortcodes = { Caption, Img, ImgLink };
 
 export default function Post(props) {
   const { data } = props;

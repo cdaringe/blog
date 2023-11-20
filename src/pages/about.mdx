@@ -3,23 +3,15 @@ title: ".:about"
 slug: "/about"
 # date: "2023-11-22T00:00:00.000Z"
 featured: true
-draft: false
 tags: []
 ---
 
-<a
-  style={{ display: "inline-block", margin: "10px 0;" }}
-  className="img-link"
-  href="https://static.cdaringe.com/c/pub/img/headshot.jpeg"
->
-  <img
-    style={{ bordeRadius: 5, boxShadow: "0px 0px 15px 5px #ccc;" }}
-    src="https://static.cdaringe.com/c/pub/img/headshot.jpeg"
-    className="img-frame float-right"
-    width={150}
-    height={150}
-  />
-</a>
+import FireEyes from "../components/FireEyes";
+import Caption from "../components/Caption";
+import ImgLink from "../components/ImgLink";
+import Img from "../components/Img";
+
+<FireEyes />
 
 # welcome
 
@@ -30,9 +22,9 @@ sections to learn about me.
 
 ## professional life & recent history
 
-I am an engineer in Portland, OR, currently employed as a
+I am an engineer in Portland, OR, currently employed as,
 
-`Fancy Titled Engineer` at [WalmartLabs](https://www.walmartlabs.com/)
+1. `Overly Fancy Titled Engineer` at [WalmartLabs](https://www.walmartlabs.com/)
 
 Previously,
 
@@ -59,12 +51,12 @@ following:
 2. **BS Computer Science (equivalent, no capstone)** (Portland State University,
    3.8, 2014)
 3. **BS Industrial Engineering** (Oregon State University, 3.92, 2010)
-4. **BS Manufacturing Engineering** (Oregon State University, 2010)
+4. **BS Manufacturing Engineering** (Oregon State University, 3.92, 2010)
 5. **Business & Entrepreneurship Minor** (Oregon State University, 3.92, 2010)
 
-My completion of a masters degree is a direct reflection of my existing
-expertise and commitment to excellence in software design. I have a passion for
-the craft, and want to produce the best quality work that I can.
+My completion of a masters degree is a direct reflection of my commitment to
+excellence in engineering design. I have a passion for the craft, and want to
+produce the best quality work that I can.
 
 I completed my Industrial, Manufacturing, and business certifications at
 [Oregon State University](https://oregonstate.edu/) back in 2010.  I finished
@@ -91,17 +83,16 @@ in these industries that I have worked and will continue to work.
 
 ## off hours
 
-<a
-  href="https://static.cdaringe.com/archive/2012/05/scanT.jpg"
-  className="img-link"
->
-  <img
-    src="https://static.cdaringe.com/archive/2012/05/scanT-150x150.jpg"
-    className="img-frame float-right"
-    width="150"
-    height="150"
-  />
-</a>
+<ImgLink
+  imgProps={{
+    src: "https://static.cdaringe.com/archive/2012/05/scanT.jpg",
+    style: { width: "70%", height: "46.38%" },
+    height: "331",
+    width: "500",
+  }}
+/>
+
+<Caption>Personal Scantron. I was once as young as it claims {"😵‍💫"}</Caption>
 
 Off hours, you will observe me most easily as a cyclist, as a geek, and
 certainly as keeping

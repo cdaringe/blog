@@ -11,14 +11,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
-  console.log(node.internal.type);
   if (node.internal.type === "Mdx") {
+    const value = node.frontmatter.slug.match(/^\//)
+      ? node.frontmatter.slug
+      : `/${node.frontmatter.slug}`;
     createNodeField({
       node,
       name: "slug",
-      value: node.frontmatter.slug.match(/^\//)
-        ? node.frontmatter.slug
-        : `/${node.frontmatter.slug}`,
+      value,
     });
   }
 };
@@ -55,13 +55,13 @@ export const createPages = async ({ graphql, actions, reporter }) => {
   const { pages, posts, allNodes } = data.allMdx.edges.reduce(
     (acc, edge) => {
       const { node } = edge;
-      const isPage = node.internal.contentFilePath.match(/pages\/.+\.md/);
+      acc.allNodes.push(edge.node);
+      const isPage = node.internal.contentFilePath.includes("src/pages");
       if (isPage) {
         acc.pages.push(edge);
       } else {
         acc.posts.push(edge);
       }
-      acc.allNodes.push(edge.node);
       return acc;
     },
     { pages: [], posts: [], allNodes: [] },
@@ -69,7 +69,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
   createPaginatedPages({
     edges: posts,
     createPage,
-    pageTemplate: path.resolve(__dirname, "./src/components/Index.js"),
+    pageTemplate: path.resolve(__dirname, "./src/components/Index.jsx"),
     pageLength: 10, // This is optional and defaults to 10 if not used
     pathPrefix: "", // This is optional and defaults to an empty string if not used
     context: {}, // This is optional and defaults to an empty object if not used
@@ -79,14 +79,8 @@ export const createPages = async ({ graphql, actions, reporter }) => {
       frontmatter: { slug },
       id,
     } = node;
-    console.log(node.internal.type);
     if (!id || !slug) {
       throw new Error(`invalid node: ${JSON.stringify(node)}`);
-    }
-
-    // debug idea
-    if (slug.includes("components/Post")) {
-      throw new Error("wtf");
     }
 
     const componentFilename = path.resolve(

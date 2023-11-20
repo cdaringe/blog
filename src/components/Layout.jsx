@@ -65,28 +65,39 @@ function Layout({ children }) {
           ["https://cdaringe.github.io/rad/", "rad"],
           ["https://upnup.cdaringe.com", "up'n'up"],
           ["https://dvd.js.org?names=han,luke,leia,chewy", "dvd.js.org"],
-          ["https://senorsalsa.org", "senor-salsa"],
           ["https://cowtown.surge.sh", "cowtown"],
           ["https://cdaringe.github.io/standup/", "standup"],
           ["https://diary.cdaringe.com/", "github diary"],
           ["https://dino-dna.github.io/donut", "donut"],
-          ["https://truth.lol", "truth.lol"],
+          ["https://truth.cdaringe.com", "truth.lol"],
           ["https://github.com/cdaringe/freshawair", "freshawair"],
-          [
-            "https://cdaringe.github.io/factorio-type-kit/",
-            "factorio-type-kit",
-          ],
           [
             "https://fish.js.org/?names=cdaringe,your-name-here,your-best-friend,your-mom",
             "fish.js.org",
           ],
-        ].map(([href, children], i) => (
-          <ProjectLink key={i} {...{ href, children }} />
-        ))}
+          [
+            {
+              githubUrl: "https://github.com/cdaringe/factorio-type-kit",
+              children: "factorio-type-kit",
+              dead: true,
+            },
+          ],
+        ].map(([href, children, extras], i) =>
+          typeof href === "string" ? (
+            <ProjectLink key={i} {...{ href, children }} />
+          ) : (
+            <ProjectLink key={i} {...href} />
+          ),
+        )}
         <ProjectLink
           children="red-or-green"
           href="https://redorgreen.org"
           githubUrl="https://github.com/cdaringe/redorgreen"
+          dead
+        />
+        <ProjectLink
+          href="https://senorsalsa.org"
+          children="senor-salsa"
           dead
         />
       </header>

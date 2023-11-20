@@ -38,7 +38,7 @@
     "prebuild": "npm run clean",
     "build": "gatsby build",
     "bd": "DEBUG=1 gatsby build",
-    "predevelop": "npm run clean",
+    "prestart": "npm run clean",
     "develop": "gatsby clean && gatsby develop",
     "clean": "gatsby clean",
     "start": "gatsby develop",
