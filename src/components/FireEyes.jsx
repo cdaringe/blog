@@ -6,6 +6,16 @@ const Flame = (props) => (
 
 const FireEyes = () => {
   const [isEyesBurning, setIsEyesBurning] = React.useState(false);
+  React.useEffect(() => {
+    const onsrcoll = () => setIsEyesBurning(true);
+    const onscrolled = () => setIsEyesBurning(false);
+    globalThis.addEventListener("scroll", onsrcoll);
+    globalThis.addEventListener("scrollend", onscrolled);
+    return () => {
+      globalThis.removeEventListener("scroll", onsrcoll);
+      globalThis.removeEventListener("scrollend", onscrolled);
+    };
+  }, []);
   return (
     <div style={{ position: "relative" }}>
       <a
