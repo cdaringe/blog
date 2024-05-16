@@ -63,7 +63,9 @@ export const createPages = async ({ graphql, actions, reporter }) => {
       if (isPage) {
         acc.pages.push(edge);
       } else {
-        acc.posts.push(edge);
+        if (!edge.node.frontmatter.draft) {
+          acc.posts.push(edge);
+        }
       }
       return acc;
     },
@@ -77,7 +79,8 @@ export const createPages = async ({ graphql, actions, reporter }) => {
     pathPrefix: "", // This is optional and defaults to an empty string if not used
     context: {}, // This is optional and defaults to an empty object if not used
   });
-  allNodes.forEach((node) => {
+  allNodes
+  .forEach((node) => {
     const {
       frontmatter: { slug },
       id,
