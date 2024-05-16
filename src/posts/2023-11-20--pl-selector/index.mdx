@@ -1,0 +1,105 @@
+---
+title: Programming Language Selector
+slug: /pl-selector
+date: "2023-11-03T00:00:00.000Z"
+featured: false
+draft: false
+tags:
+  - programming
+  - pl
+---
+
+**TLDR**: The [Programming Language Selector](https://cdaringe.github.io/programming-language-selector/) can help teams apply structured problem solving when making a big language decision!
+
+Picking a programming language is not an easy choice. The choice of languages
+[is enormous](https://en.wikipedia.org/wiki/List_of_programming_languages).
+Not only are the options seemingly boundless, there is often strong [cognitive biases](https://www.verywellmind.com/cognitive-biases-distort-thinking-2794763#toc-the-false-consensus-effect)
+held by evaluators making the decision. Woe is the team that has individuals with strong divergent
+opinions, yet must also make a language decision. I have been unfortunate enough to suffer
+through many, many such tedious debates.
+
+Programming languages exist strictly to solve problems. Programming languages
+are mechanisms to represent the production or exchange of data, which are
+objectives that are neatly categorized under a broader umbrella of "solving problems."
+
+I care about deeply about structured problem solving. Entertain me for a few moments. It is my observation that structured problem
+solving is rare in the software world. Surely if you ask, peer developers
+would claim that they practice it rigorously. 15 years of experience, however,
+has shown me that the common software engineer's version of problem solving is
+radically distant from the engineering process. The engineering process demands
+that the engineer define the problem, research the problem and its context, propose a solution (or hypothesis),
+test it, and repeat until adequately solved. The process is a mix of the scientific method and
+pragmatism that warms the soul. When software developers, engineers, and leaders meet to solve problems as group,
+problem solving tends to become--for reasons unknown--exceptionally sloppy.
+We have accepted that no discipline in technical meetings is ok, and that free
+form discussion is an acceptable baseline to collaborate.
+Developers want to talk about the symptoms, rather than dig towards an underlying cause.
+When researching the problem context, it's common for conversation to drift into endless anecdotes or minor questions, rather than capture and categorize observations. This results in a lack of focus and thus an inability to capture a snapshot of the required context needed during the next phase of the process.
+There's rarely a moment in the process where the research phase elegantly halts and transitions
+into the solution assessment phase. The inverse is probably even more common--where solutions are evaluated or prescribed before defining the problem, and end up not being a good fit.
+Even when solutions are orderly presented, it's extremely rare for well-formed
+evaluation criteria to be presented as well. If the problem under scrutiny
+is performance related, software developers do love presenting benchmark numbers,
+which is often an excellent evaluation criteria. Problems outside of perf,
+however, are oft subjected to arbitrary decision criteria, which is a terrible
+way to make decisions.
+
+
+The software world practices almost no formalisms or standard processes when working
+through common problems. Therefore, **it is no wonder that when picking a
+programming language, the decision process is mired in pedantry, cycles of repeated arguments,
+and participants feeling negatively in whatever outcome is weakly established.**
+
+How could the process be better? Minimally, actually practice the engineering process,
+versus a poor, ad-hoc substitution. Titles don't mean squat--engineers
+must practice the fundamentals.
+When picking a PL, I offer you _rails_ for executing the engineering process,
+tailored with canned sections to make such decisions _subjectively more objective_.
+
+Let's try it out:
+
+**Define the problem**
+
+I need to program a solution for X, but do not have a programming language selected, thus cannot yet build X.
+
+**Research**
+
+_Pretend you researched all properties of all programming languages into some sort of multi-dimensional matrix and listed them here._
+
+Done! In actuality, I [have captured a non-trivial subset of properties for many programming languages](https://docs.google.com/spreadsheets/d/1ZVdRbDx5KffYxcecuP6AHXcJWl35nhv9U5f62h6azOU), as a sensible substitute. I have enumerated many of the macro capabilities and general properties of programming languages, some which are cross-cutting between langs, and some which are unique to smaller subsets. I then have applied a score to each intersection of property & language, concluding how well that property is manifested in the associated language.
+
+**Solutions**
+
+How do you evaluate solutions? Good solutions imply that the problem is solved
+effectively & elegantly against domain-specific evaluation criteria. Effective and
+elegant are wide, arbitrary terms, which is why we use domain-specific criteria help yield a score for evaluation.
+
+I propose the following macro evaluation criteria for language selection. Questions about the specific programming problem at hand must be answered here as input into the evaluation model. These inputs work universally across any software development team.
+
+- _Fitness of domain_:
+  - What domain am I programming in? Desktop gaming, mobile gaming, web UIs, ETL processing, messaging? The current model doesn't accept multi-domain inputs. Pick the dominant domain, if relevant.
+- _Which technical values are paramount for this project_:
+  - If it's a financial project, "correctness" is a paramount project value. If it is a development tool only, maybe you ought prioritize developer UX. If your project is a game, maybe you value performance most. Of course, maybe you need a cross sectional balance. You can't have everything, thus your values ought be treated as zero-sum, and will be modeled as such.
+- _What social values are paramount for this project_:
+  - Do I need to hire for this initiative?
+  - Is there a supportive community working in this space?
+  - Is there an ecosystem in place, giving developers rails to address common problems?
+
+There are all sorts of evaluation models
+applied in different industries. [House of Quality](https://asq.org/quality-resources/house-of-quality), anyone? For this problem, I [recommend a basic linear model](https://github.com/cdaringe/programming-language-selector/blob/b3403e59b45be420e534fae894138c3f85d05d76/src/app/model/basic.ts) that quantifies your input values (the decision criteria above) against scored programming languages properties. If that's not clear yet, open the application--the first three sections are input controls for you to express your values.
+For example, if runtime performance is a paramount value, languages that run on the metal (CPU or GPU directly) versus a VM, may receive higher scores. However, of course programming domain directly influence this, as some systems, such as python, have wildly popular and well understood bindings to linear algebra libraries, which may make it an adequate fit for performance, even if python is not a fast candidate generally.
+This model does not represent co-variance of language properties against user values, and instead uses programming domain associativity to bias that correlation.
+
+Recap! How does one select a solution, picking a language?
+
+- Define your values with respect to the evaluation criteria.
+- Input them into the model: [cdaringe.github.io/programming-language-selector](https://cdaringe.github.io/programming-language-selector/).
+- Grok the output, which is a ranked list of languages, with normalized score from 0 to 1. _Challenge_ the output. Use it as a launch point for any nuanced discussion or business requirements that may influence the decision one direction or the other.
+
+
+What next? That's up to the decision makers. Software _is_ equal parts art,
+equal parts science. Despite the creative nature of finding a solution, as much
+objective characterization of the problem-space should be sought by participants.
+
+Full transparency, I am yet to test this on-the-job. It was presented, but the
+underlying project fizzled out. Willing to give it a whirl? Please let me know how it goes!

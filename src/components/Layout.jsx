@@ -64,14 +64,18 @@ function Layout({ children }) {
         </h6>
         {[
           ["https://cdaringe.github.io/rad/", "rad"],
-          ["https://upnup.cdaringe.com", "up'n'up"],
-          ["https://dvd.js.org?names=han,luke,leia,chewy", "dvd.js.org"],
-          ["https://cowtown.surge.sh", "cowtown"],
-          ["https://cdaringe.github.io/standup/", "standup"],
-          ["https://diary.cdaringe.com/", "github diary"],
-          ["https://dino-dna.github.io/donut", "donut"],
-          ["https://truth.cdaringe.com", "truth.lol"],
           ["https://github.com/cdaringe/freshawair", "freshawair"],
+          ["https://upnup.cdaringe.com", "up'n'up"],
+          [
+            "https://cdaringe.github.io/programming-language-selector/",
+            "pl selector",
+          ],
+          [("https://diary.cdaringe.com/", "github diary")],
+          ["https://dvd.js.org?names=han,luke,leia,chewy", "dvd.js.org"],
+          ["https://cdaringe.github.io/standup/", "standup"],
+          ["https://dino-dna.github.io/donut", "donut"],
+          ["https://cowtown.surge.sh", "cowtown"],
+          ["https://truth.cdaringe.com", "truth.lol"],
           [
             "https://fish.js.org/?names=cdaringe,your-name-here,your-best-friend,your-mom",
             "fish.js.org",
