@@ -1,15 +1,70 @@
 ---
-title: ughh
-slug: /xxxx
-date: "2024-05-01T00:00:00.000Z"
+title: Peanut Butter Spinner
+slug: /peanut-butter-spinner
+date: "2024-05-15T00:00:00.000Z"
 featured: false
-draft: true
+draft: false
 tags:
   - foo
+embeddedImagesLocal:
+  - front.png
+  - old_design.png
+  - back.png
+  - iso.png
+  - side.png
 ---
 
-## Context
+I love peanut butter. I also hate mixing it. There are [many products](https://duckduckgo.com/?q=peanut+butter+mixer&ia=web)
+available to mix peanut butter for you, but I wanted my own design that took no effort to use. I'm looking for a "set it and forget it" solution. For those who
+don't know what I'm talking about, many natural peanut butters are not homogeneous at all times. The oil and the nutty material separate, and thus require mixing to return it to buttery consistency.
 
-## Takeaway
+Here's how I made my own.
 
-Never pick bash or python.
+<Img idx={0} alt="Chris D's Peanut Butter Mixer" />
+<Caption>
+  {"My very own peanut butter spinner device."}
+</Caption>
+
+First off, why do this? Mixing peanut butter is obnoxious. Further, I am loyal to Adam's Peanut Butter. Adam's is good flavor and
+simple ingredients.  I wish they sold absolutely enormous jars or buckets of
+it. Alas, the biggest I can find are the plastic container
+versions from Costco, shown below in the video below.
+
+<iframe style={{display: 'block', margin: 'auto'}} width="560" height="315" src="https://www.youtube.com/embed/qDLf3CFJuok" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+SPONSOR ME ADAMS I NEED MORE PEANUT BUTTER!
+
+I wanted a solution that doesn't require anything other than placing the jar on something and hitting a go button.
+In this case, it ended up being a switch. The rotary switch has a fully off mode, and otherwise is an adjustable potentiometer.
+I source 5V power from a USB adapter mean to snap into cigarette lighter holes in vehicles.
+USB power => motor control board => motor. The motor is itty bitty, and has a nice little gearbox for some extra torque.
+Here's a zoom in:
+
+<Img idx={1} alt="The internals of the mixer on an older model" />
+<Caption>
+  {"The internals of the mixer on an older model."}
+</Caption>
+
+<Img idx={2} style={{maxWidth: 400, marginBottom: 10}} alt="mixer pic 2" />
+<Img idx={3} style={{maxWidth: 400, marginBottom: 10}} alt="mixer pic 3" />
+<Img idx={4} style={{maxWidth: 400, marginBottom: 10}} alt="mixer pic 4" />
+
+Here's the BOM:
+
+1. Case, 3D printed CAD, all found [here, public on OnShape](https://cad.onshape.com/documents?nodeId=b2ddb056e2cd15fe083855ca&resourceType=folder)
+   - **Please ignore** anything with the `unused` tag. I may upload it to printables one day.
+   - One can simply export the models as STLs and print away!
+1. [Low Voltage Motor Speed Controller, 1803B Adjustable Driver Switch with Speed Control Knob](https://www.amazon.com/dp/B08BJ4WQCV?psc=1&ref=ppx_yo2ov_dt_b_product_details)
+1. [Mini Micro N20 Gear Motor DC 3V-6V Slow Speed Full Metal Gearbox](https://www.amazon.com/dp/B09DG3GCGK?psc=1&ref=ppx_yo2ov_dt_b_product_details)
+1. [USB Type A Male Plug to DIP Converter Board 4 Pin 2.54mm Pitch Adapter](https://www.amazon.com/dp/B07W6T9KPJ?psc=1&ref=ppx_yo2ov_dt_b_product_details)
+1. 2.54mm pitch headers pins for the above board, and some wires with header pin connectors. I used male to female wires, as the male side is inserted into the motor speed controller.
+1. [Single Port USB 3.0 Male to Female AUX Car Mount Flush Cable](https://www.amazon.com/dp/B0BDWSQ49P?psc=1&ref=ppx_yo2ov_dt_b_product_details)
+   - There's probably a better design than using this, but it was really convenient just being able to press fit this USB power source directly into the plastic case. I'd opt for a longer cable next time.
+1. 4x 608zz bearings, aka "skate bearings." Sk8 or die, bro.
+1. M8x100mm threaded rod with hex cap
+1. A handful of 4mm set screws, 10mm length
+1. An o-ring. I don't know the specs. I had an extra one laying around from my bicycle GPS. My GPS came with some o-rings that attach the GTP mount to the handlebar. They happened to be the perfect size! If I ever figure out what size it is, I'll follow up. How lucky that the first ring I grabbed happened to be a perfect fit, and that I even had one at all. Sorry! Not very helpful for you. I don't know, try searching for "GPS mount o-ring" :).
+
+> This won't work man. Have you SEEN the inside of a concrete mixer? - Jerk, low faith friend
+
+Well I got news for you friend, it works well enough! Although I cannot say that it works perfectly, after ~20 minutes of care free rotation, minimally, there is not a layer of oil when the jar is upright and stationary. The oil is perhaps not perfectly distributed into the center of the jar. However, enough mixing has ocurred around the outer radius such that a quick manual mix on first open is much more easily doable with a knife. Perfect? Nah. Good enough? Absolutely!
