@@ -116,7 +116,7 @@ const feed =  {
         // if `string` is used, it will be used to create RegExp and then test if pathname of
         // current page satisfied this regular expression;
         // if not provided or `undefined`, all pages will have feed reference inserted
-        match: "^(?!.*about$).*$",
+        match: /^(?!.*about$).*$/,
         // optional configuration to specify external rss feed, such as feedburner
         // link: "https://cdaringe.com.feedburner.com/gatsby/blog",
       },
