@@ -1,0 +1,115 @@
+---
+title: No Docs, No Software
+slug: /no-docs-no-software
+date: "2024-09-24T00:00:00.000Z"
+featured: false
+draft: false
+tags:
+  - docs
+embeddedImagesLocal:
+  - files.png
+  - words.png
+---
+
+## A poll on your favorite softwares
+
+Think of all of the software you have used in your life. If you're a developer,
+think of all of the software you've integrated with (libs, apps, APIs, etc).
+Now, reduce that list to software to those that you loved or helped you non-trivially.
+
+**Count how many of those helpful softwares had docs**. I'll put money down that it was nearly 100%, wasn't it?
+
+Let's study the inverse. How many genuinely helpful softwares have you used
+that came with no documentation? Probably none, right?
+
+Why is it, then, that our dev communities write so little internal documentation?
+
+Internal documentation represents one of my greatest successes, and also one of my greatest failures. Here it is:
+
+<Img idx={0} style={{width: '90%'}} alt="Monorepo document file contributors chart" />
+<Caption>
+  {"Monorepo documentation file contributors. (e.g. docs/**/*.md)"}
+</Caption>
+
+No, I'm not trying to show off. No, I'm not looking for a pat on the back.
+I'm demonstrating my commitment to the belief
+that if you haven't written down how to use your software, it may as well not exist.
+Heck, at the time of writing, I haven't been a member of that codebase for ~1/2 of its existence!
+
+Do you see where my failure was? If not clear already--my failure is that the chart above is nowhere near uniformly distributed.
+Indeed, there are about a dozen power writers out of 1000+ developers. ~1 writer per 100 developers is _not_ great at all. Were those other 99 developers not writing libraries or APIs?
+Spoiler: they absolutely were. Spreading the "gospel of documentation" and flattening that chart would equate to greater success for me.
+
+If you're selling cars, fuel must also be available. Software is the vehicle, and
+documentation is the fuel that your customers burn through to accelerate the software into
+motion. Users are only going to use that software if:
+
+1. you give them resources for success (docs!), or
+1. they're forced to use it, or
+1. they have exceptional motivation to get your software to work. This generally only occurs if your software is rare and critical to the user.
+
+If you're writing the software for others, why _wouldn't_ you want to help your users?
+
+<Img idx={1} style={{width: '90%'}}  alt="Monorepo document contributor documentation word count chart" />
+<Caption>
+  {"Monorepo contributor documentation file word count. (e.g. docs/**/*.md)"}
+</Caption>
+
+## > but but but!!!
+
+Here's some top tier malarkey against writing docs.
+
+### "the code is the best documentation!"
+
+We've all worked worked with engineers who say "the code is the best documentation".
+
+These people are naive, and forget who _code_ is for.
+
+Humans--mortals--speak their mother tongue. Code, no matter our expertise, is our second language.
+Further, it is indirect, and forces the reader into non-linear reading (aka jumping, tracing, etc around the document).
+
+
+> Not my code, sir! It's fluent!
+
+ Sure, kid. You can use your pipeline operators, fluent methods, monadic or let-style tricks--the above claims hold.
+
+In all fairness, this mantra does hold for small projects,
+especially those with itty-bitty interfaces where the interface and typing alone expresses
+crystal clear semantics.
+
+This all falls apart _rapidly_ when dealing with systems of software, or even small softwares with configurable options. If you are using other's software, you are likely using
+it such that you can leverage some canned value. Reverse engineering software to exploit its canned value
+_can_ negate that value, or minimally, diminish it, as that value is no longer canned--you had to open the can and stir it just to consume it!
+
+### "internal documentation isn't as important that external documentation!"
+
+Absolutely! Does that somehow negate the fact that your internal software needs
+to be used/consumed/read/deployed by your peers? Of course not! Lesser importance
+does not negate the need to write docs.
+
+### "I'm getting paid either way"
+
+No one has actually said this to me :). Regardless, documentation seems to rarely
+be formalized or normalized into software teams' default rhythms. I know there
+are exceptions to this--super cool teams are out there. I've worked with literally
+hundreds at a global corp and more in smaller firms. I just don't see it.
+
+
+### "My software is a GUI, and that GUI makes its usage self evident"
+
+Customers using the GUI is not the customer to which I'm referring.
+Customers--including your peers--whom have to consume, say, components/widgets/utilities
+in that codebase are the users to which I'm referring.
+
+## Is it really worth it?
+
+Yes. Here's why.
+
+- Docs help your users. Don't force your users to go spelunking into code. Give them what they need, at least for the 80-90% of use cases. It may be ok to send the power users spelunking--use your best judgement.
+- Docs are cheap. Docs often take seconds-to-minutes to write. If someone says "ahhh that's too much work" they are not being honest. Docs don't have to be long or exhuastive. In fact, **concisely** covering the how/what/why/when to use your software, accompanied by a minimal example or two, may be the best outcome!
+- Docs will improve your design - robustness. If you have to define the behavior of your system in text, you will often exercise your system literally or virtually, and thus periodically identify edge cases that may be filled.
+- Docs will improve your design - UX. Docs are your artifact's public image. You want your software to be delightful to use. It's often the case that docs (and often equally tests), give you a chance to exercise your work just as your customer would. This helps you constrain and refine your interfaces to make them human friendly.
+
+## Conclusion
+
+Write docs, man!
