@@ -48,10 +48,10 @@ function Layout({ children }) {
               href: "mailto:cdaringe@gmail.com",
               iconName: "fa-envelope-square",
             },
-            // {
-            //   href: "http://blog.cdaringe.com/rss",
-            //   iconName: "fa-rss-square",
-            // },
+            {
+              href: "/rss.xml",
+              iconName: "fa-rss-square",
+            },
           ].map((props, i) => (
             <SocialIcon
               key={i}

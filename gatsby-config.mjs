@@ -65,17 +65,78 @@ const mdx = [
   },
 ];
 
+// @warn ONLY GENERATES IN PROD BUILDS!
+/** @type {import("gatsby").GatsbyConfig['plugins'][number]} */
+const feed =  {
+  resolve: `gatsby-plugin-feed`,
+  options: {
+    query: `
+      {
+        site {
+          siteMetadata {
+            title
+            description
+            siteUrl
+          }
+        }
+      }
+    `,
+    feeds: [
+      {
+        serialize: ({ query: { site, allMdx } }) => {
+          return allMdx.nodes.map(node => {
+            return Object.assign({}, node.frontmatter, {
+              title: node.frontmatter.title,
+              date: node.frontmatter.date,
+              url: site.siteMetadata.siteUrl + node.fields.slug,
+              guid: site.siteMetadata.siteUrl + node.fields.slug,
+            })
+          })
+        },
+        query: `
+          {
+            allMdx(
+              sort: { order: DESC, fields: [frontmatter___date] },
+            ) {
+              nodes {
+                fields {
+                  slug
+                }
+                frontmatter {
+                  title
+                  date
+                }
+              }
+            }
+          }
+        `,
+        output: "/rss.xml",
+        title: "cdaringe rss feed",
+        // optional configuration to insert feed reference in pages:
+        // if `string` is used, it will be used to create RegExp and then test if pathname of
+        // current page satisfied this regular expression;
+        // if not provided or `undefined`, all pages will have feed reference inserted
+        match: "^(?!.*about$).*$",
+        // optional configuration to specify external rss feed, such as feedburner
+        // link: "https://cdaringe.com.feedburner.com/gatsby/blog",
+      },
+    ],
+  },
+};
+
 /** @type {import("gatsby").GatsbyConfig} */
 const config = {
   flags: {},
   siteMetadata: {
     title: " // cdaringe - blog",
+    siteUrl: "https://cdaringe.com",
   },
   plugins: [
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     ...mdx,
+    feed,
     {
       resolve: "gatsby-plugin-manifest",
       options: {
