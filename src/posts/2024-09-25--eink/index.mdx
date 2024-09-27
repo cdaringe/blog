@@ -1,0 +1,230 @@
+---
+title: DIY e-ink dashboard with web snapshot service
+slug: /e-ink-dashboard
+date: "2024-09-25T00:00:00.000Z"
+featured: false
+draft: false
+tags:
+  - docs
+embeddedImagesLocal:
+- eink_early.jpg
+- eink_fridge_error.jpg
+- eink_plastic_backplate.jpg
+- eink_mounting_fasteners.jpg
+- eink_fridge_final.jpg
+- kindle.jpg
+---
+
+TLDR: I built an e-ink firmware and web service for driving a dashboard fueled by website screenshots. You can see the source
+code @[e-ink-dashboard](https://github.com/cdaringe/eink-dashboard).
+
+<Img idx={0} alt="Early version e-ink dashboard" />
+<Caption>
+  {"Early version of e-ink web dashboard"}
+</Caption>
+
+## Problem Statement
+
+I want an e-ink display to show me cool-stuff™ when I'm walking around my house.
+
+More specifically, throughout the day, I want to see:
+
+1. indoor [airquality stats](https://github.com/cdaringe/freshawair), preferably through timeseries charts for all of my sensors.
+1. funny/fake news headlines from [theonion.com](https://theonion.com). It's stupid, but it gets me sometimes.
+1. maybe--maybe!--a few real news headlines, at least in the morning when I'm filling up my coffee mug.
+
+I find myself walking by the kitchen refridgerator reguarly during the workday, thus, it's
+a great spot to mount my display.
+
+
+## Research
+
+### Hardware
+
+First thing first! We gotta pick the display hardware. There's far more options
+on the market now than there was a few years ago.
+
+#### Option 1 - Amazon Kindle
+
+<Img idx={5} alt="old garbaggio kindle" style={{width: 200}} />
+<Caption>
+  {"old garbaggio kindle"}
+</Caption>
+
+* **Pros**: dirt cheap, readily available, great form factor
+* **Cons**: not readily programmable, not hacking friendly
+
+Geeze--I already have an unused e-ink display--an Amazon kindle! Kindles are awesome.
+They have a sleek thin profile, run some sort of linux variant, and can be meddled with.
+After hacking a few kindles, I recommend to any interested party to not persue this route.
+Kindle hacking is doable, but the hardware _fights you_ along the way. The hacks are
+not always reliable, different f/w versions behave differently, mine had unsolvable
+problems with its [RTC](https://en.wikipedia.org/wiki/Real-time_clock). I've always
+had success jailbreaking it and getting it to paint _stuff_ on screen, but it's a system
+that simply _doesn't want to be programmed_ against. Amazon doesn't want you doing this,
+and their softwares may periodically unjailbreak you. I do not condone or recommend using
+kindles. Yes, you can do it. However, it can be very frustrating--death by 1000 cuts--trying
+to build robust software on this platform.
+
+#### Option 2 - Waveshare DIY kits
+
+Waveshare has a bunch of displays and associated controller modules ready to hack, off-the-shelf!
+
+* **Pros**: cheap, hackable
+* **Cons**: less polished form factor with off-the-shelf options
+* **Neutral**: OK SDKs
+
+Honestly, this is a great option. Consider it! However, I found the following compelling...
+
+#### Option 3 - Soldered Inkplate
+
+Here's an excellent turn-key product, ready to program with almost nil effort.
+
+I picked the [Inkplate 10 - https://soldered.com/product/inkplate-10-9-7-e-paper-board-copy/](https://soldered.com/product/inkplate-10-9-7-e-paper-board-copy/).
+
+* **Pros**: pay-to-play turnkey solution, amazing SDK
+* **Cons**: none.
+* **Neutral**: OK form factor, can be the most expensive option (but still good value)
+
+I spent around USD$220 for my Inkplate 10. I want a big display! It took {'<5'} minutes
+after unboxing it to have meaningful content rendered on the screen. Incredible!
+
+I forgot to buy
+the option with a battery, but I found a compatible battery on Amazon. Soldered does sell a battery, and
+I recommend buying that. The battery from Amazon is cheaper and works fine, but
+the terminals need to be flipped.
+
+Wonderfully, the 3d printed case that I bought from Soldered also has a little
+slot to locate and fix the battery into position, which is pretty slick. It has a
+home and wont rattle around. Even cooler--it has a charging circuit already dialed in.
+
+Finally, because I want my e-ink to live on the fridge for weeks at a time
+without charging, I really wanted to truly go low power. That means that I need
+to send the device into deep sleep, and have it wake on a timer. For this, you'll need
+a CR2032 battery, for which the Inkplate board already has a receptacle for. Now,
+the RTC clock and waking features become available to you!
+
+Full Bill of Materials (BOM):
+
+- [system battery - 3.7V 3000mAh 605080](https://www.amazon.com/dp/B08TTTBTSR?ref=ppx_yo2ov_dt_b_fed_asin_title)
+- [rtc battery - cr20232](https://www.amazon.com/Duracell-Lithium-Battery-Lasting-Count/dp/B07G7KRQQ5/ref=sr_1_6_f3_0o_fs_mod_primary_alm?crid=IXFM893IOLTQ&dib=eyJ2IjoiMSJ9.0b1OE_Q4kfs6yVWkltyKKLg_Yv8DHicHWCEBmJAxWS-07mI_VmoZ-YKr5mjCY1T7DLpShn7pmRJga0KsoI663kmQ8a7Z_-JQN5J5igdcMUx5v-UBoqVpJow-ZWhyoOZGzaUlCFfvCaICeS1v_NDGp3PaSE2YKUelvOMhG2z3MNiA2Hz3MJUvApIYBrXNrZuudFrBeaQ9d8ziUoZfnfwsnJhgBmaTSJ9IUEkfOorC9l0q2qxg2je7ubLghH9lBMt3M3eIsq1x8bkb-LanCN85bV3At4JEQ0TLikeE9odNBmI.psqMnckz5BcJk0vxyF3pYGBJZREVYXAT2FwxdD1b4Rg&dib_tag=se&keywords=cr2032&qid=1727392542&s=electronics&sbo=m6DjfpMzMLDmL8pSMKX8hw%3D%3D&sprefix=cr2032%2Celectronics%2C191&sr=1-6)
+- [magnets](https://www.amazon.com/dp/B0CS2WZXHD?ref=ppx_yo2ov_dt_b_fed_asin_title). Gotta get this baby snapped on the fridge firmly!
+
+<Img idx={1} alt="Family portrait displayed as my fallback error screen" />
+<Caption>
+  {"Family portrait displayed as my fallback error screen"}
+</Caption>
+
+### GUI Software
+
+I already have web-based visuals on my home network for my airquality monitors.
+See [cdaringe/freshawair](https://github.com/cdaringe/freshawair).
+Getting these charts onto my display is my primary objective.
+
+#### Option 1 - Build GUIs in C
+
+Err uhh hmm uhhhhhhh. Seems silly to have great visuals already on the web and
+_rebuild_ them in C. Further, my data is in postgres, which freshawair's grafana instance already
+integrates with. To rebuild my core visuals would be to re-invent the wheel.
+
+No thanks.
+
+#### Option 2 - Capture Grafana screenshots
+
+Well hey, if my UI is already avaible in grafana, why not just capture that?
+
+This almost meets my needs! However, Grafana has some shortcomings. You cannot
+change very simple UI _things_--like axis font sizes or chart title font properties.
+Further, I don't want _most_ of the grafana GUI aspects, just specifically some
+charts in my dashboards.
+
+Further, if I want _other_ content interspersed on my e-ink dashboard, using
+Grafana alone doesn't allow for any customizations.
+
+#### Option 3 - Screenshot-based dashboard webapp
+
+This option takes the approach of having the dashboard be a simple screenshot of
+a webapp. This option gives me great flexibility at the cost of complexity.
+The complexity is that I need _more systems_--a webapp, a means to serve that webapp, and a screenshotter workflow.
+This webapp:
+
+- supports hosting many dashboard pages, not just my airquality page
+- supports framing in specific grafana charts
+- supports scaling up/down grafana charts, which as mentioned before, lack customization capabilities. Small contents don't render well in e-ink grayscale, so scaling up certain charts yields a better UI.
+- supports easy extensibility and custom content. e.g.:
+  - my little site logo
+  - timestamps
+  - a "status" bar area, which I can fill with things like battery, voltage, and weather!
+- allows for updating dashboards quickly without having to reflash firmware!
+
+A downside to this approach is that every UI change means a _web request_.
+I don't care! My objective is genrally static content. I would like some interactivity,
+but I'll cross that bridge when I really need it!
+
+### Option 4 - Option 3 + realtime overlays
+
+How can I get _device_ data onto the screen if I'm just using screenshots?
+I'd have to screenshot in realtime if using Option 3 alone.
+
+Screeshotting is _slow_. You have to launch a browser, wait for network settling
+and web content to load, run a screenshot routine, then post-process an image.
+That's not viable for real-time.
+
+My solution for this is to make my host server an API, and allow adding overlay images
+onto the screenshots. While I could again use the C arduino API to render some
+content onto the screen with e-ink partial rendering, I want a more powerful option, and I want to keep
+the firmware simple-stupid.
+
+This solution adds `?searchParam` style options to image downloads, a
+la `GET /dashboard/image.png?batteryoverlay=85,500,1140`. Decoded, `85` means
+the battery is at `85%` capacity, and the following digits are offsets from the top-left corner of the display.
+During processing of `image.png`, overlays are detected, and ImageMagick
+`convert ...` commands composite images and text over the base image and serve the resultant image up.
+`convert` is plenty fast.
+With this capability, screenshots drive the _primary_ dashboard, while allowing some
+realtime capabilities onto the maybe-stale screenshot.
+
+This is ultimately the solution I chose.
+You can see the implementation here: [e-ink-dashboard](https://github.com/cdaringe/eink-dashboard).
+
+It's all bundled up in a docker container, making deployment easy-ish.
+
+<Img idx={2} alt="e-ink backplate" />
+<Caption>
+  {"e-ink backplate"}
+</Caption>
+
+<br />
+
+<Img idx={3} alt="Magnets for mounting" />
+<Caption>
+  {"Magnets for mounting display on fridge. I'm using the wrong fasteners at the moment. Gotta swing by the hardware store!"}
+</Caption>
+
+## Solution
+
+* Hardware: Inkplate 10 and associated parts (see above)
+* Software: [e-ink-dashboard](https://github.com/cdaringe/eink-dashboard)
+
+## Review
+
+Now that I'm done, how do I sincerely feel about it? I do a lot of stupid projects.
+Sometimes I finish them and am simply _not impressed_ with my work. Most of the time,
+I start a bigger project, get bored, and end up leaving it unfinished.
+
+Not this time! I am absolutely delighted with this project!
+
+<Img idx={4} alt="Final e-ink dashboard" />
+<Caption>
+  {"Final e-ink dashboard"}
+</Caption>
+
+There's more I want to do with it:
+
+- I should probably re-write my little server in rust, ocaml, or zig. it should take nil memory on idle.
+  - I'll keep the snapshot stuff in typescript. This is because `puppeteer` and friends are _much better_ than other tools in other stacks. This is part of the reason I run the snapshotting workflow in a child process.
+- Better support between switching between dashboard screens/modes. As written, the system is kind of _pegged_ into one view mode (aka airquality, versus theonion.com).
+- Support for interactivity.
+  - I bummerly thought the Inkplate 10 came with tactile buttons. Some of the Soldered docs are out-of-date, and I foolishily hit "buy" before realizing that the latest version of the product is missing that feature. You can kind of tell where the button controls were on prior versions of this PCB!
+
+Let me know what you think over in GitHub issues.
