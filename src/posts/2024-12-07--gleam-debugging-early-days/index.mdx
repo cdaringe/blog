@@ -1,0 +1,157 @@
+---
+title: Gleam lang debugging, early days!
+slug: /gleam-debugging-early-days
+date: "2024-12-07T00:00:00.000Z"
+featured: false
+draft: false
+tags:
+  - programming
+  - gleam
+  - debugging
+---
+
+[Jump directly to "how to setup debugging in Gleam"](#how-to-debug)
+
+[Gleam](https://gleam.run/) is nice little programming language. Perhaps common
+of functional programming languages, there is no debugger.
+
+...or _is_ there?
+
+Why care? I code a lot. I code at work, I code outside of work, I listen to code
+podcasts, I read about coding design, I teach coding. Although like to think I'm
+somewhat competent, I write garbage code. Even worse, I constantly make bad
+assumptions. Sure, I write tests, but I make bad assumptions there too.
+Interactive & introspecting debuggers are the best cure for my coding ailments.
+
+So, back to Gleam. Gleam can compile to JavaScript runtimes.
+[Alis has a branch of the gleam compiler to add JavaScript sourcemaps](https://github.com/gleam-lang/gleam/pull/3675).
+Hopefully that gets merged soon!
+
+If one can compile Gleam to JavaScript with sourcemaps, one can use existing
+JavaScript debugging tools.
+
+<a id="how-to-debug"></a>
+
+# How to setup debugging in Gleam
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/_vUFhyQiyPM?si=bUF4l_w5B500-jA8&amp;start=2"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
+
+1. `git clone` the
+   [sourcemap enabled version of the compiler](https://github.com/gleam-lang/gleam/pull/3675).
+   Hopefully you will not need to do this long term!
+2. Install a late-2024 version of the rustup compiler.
+   `rustup toolchain install stable` should do the trick, presuming you've
+   installed `rustup`.
+3. Run `cargo build`. `cargo` is distributed with `rust`.
+4. Make note of the compiled binary, e.g. `echo $PWD/target/debug/gleam` for me.
+   1. Optional--I set this path in my dotfiles as
+      `GLEAM_BIN=/path/to/target/debug/gleam`, as I'll be using it a lot going
+      forward
+5. Get hacking on your favorite gleam project. Create bugs. This shouldn't take
+   anytime at all!
+6. **Configure Gleam for debugging**. Update your `gleam.toml` with the
+   following patches:
+
+```patch
+# gleam.toml
+name = "my=project"
++ target = "javascript"
+
++ [javascript]
++ sourcemaps = true
+```
+
+1. **Teach VSCode how to debug Gleam**. The following is just for VSCode,
+   albeit, you could likely adapt these steps for other editors.
+   1. Create/update `.vscode/settings.json`:
+
+```json5
+// .vscode/settings.json
+{
+  "debug.javascript.terminalOptions": {
+    env: {
+      NODE_OPTIONS: "${env:NODE_OPTIONS} --import ./monkey-patch-gleam-custom-properties-for-debugging.mjs",
+    },
+    skipFiles: [
+      "<node_internals>/**",
+      "${workspaceFolder}/build/**/*.mjs",
+      "!**/MY_LIB_NAME/**/*.mjs",
+    ],
+    customPropertiesGenerator: "this.customProperties ? this.customProperties() : this",
+  },
+}
+```
+
+This file does some _work_.
+
+1. It sets `NODE_OPTIONS` to add an import statement to a module we will use to
+   monkey-patch the gleam runtime. **This is an optional step**, but makes your
+   output much more human friendly.
+1. Setup `skipFiles`. You probably do not want to be stepping into the gleam
+   javascript implementation of the standard libraries, as it's somewhat
+   obnoxious and disruptive. Tinker as you see fit.
+1. Sets up `customPropertiesGenerator`. This goes hand-in-hand additionally with
+   the monkey patching above. Gleam _isnt_ javascript, but we're using a
+   javascript debugger. This field helps give VSCode better hints at how to
+   present gleam data-structures in-editor. There's more work to be done here.
+   **If you are interested in this topic, please follow along @
+   [microsoft/vscode-js-debug#2140](https://github.com/microsoft/vscode-js-debug/issues/2140)**
+
+1. Next, setup your monkey-patching file. Adjust as you see fit.
+   1. Aside: it will be worth updating the gleam VSCode extension to _auto_
+      perform this for us, as it can subscribe to when users engage with the
+      debugger, and instrument automatically on our behalf!
+
+```js
+// ./monkey-patch-gleam-custom-properties-for-debugging.mjs
+/**
+ * These methods are used by VSCode JS debugger to display better representation
+ * of Gleam data structures in the debugger.
+ * @warn This feature is reliant the debug launch settings--see .vscode/{settings,launch}.json
+ */
+import Dict from "./build/dev/javascript/gleam_stdlib/dict.mjs";
+import { List, NonEmpty } from "./build/dev/javascript/prelude.mjs";
+import { new$ as newSet } from "./build/dev/javascript/gleam_stdlib/gleam/set.mjs";
+
+List.prototype.customProperties = function () {
+  return this.toArray();
+};
+
+// aSet.constructor.prototype.customProperties = function () {
+//   if (this.dict) {
+//     return Object.values(this.dict.customProperties());
+//   }
+// }
+
+NonEmpty.prototype.customProperties = function () {
+  return [this.head, ...this.tail.toArray()];
+};
+
+Dict.prototype.customProperties = function () {
+  var out = {};
+  this.forEach((v, k) => {
+    out[k] = v;
+  });
+  return out;
+};
+
+Object.getPrototypeOf(newSet()).customProperties = function () {
+  return this.dict.entries().map(([k, _v]) => k);
+};
+```
+
+1. `gleam clean`
+1. Fire up a VSCode JavaScript debugging terminal. E.g.
+   `cmd+shift+p Debug Terminal`.
+1. Set some breakpoints in your Gleam source code...
+1. `$GLEAM_BIN run`
+   1. Enjoy debugging!
