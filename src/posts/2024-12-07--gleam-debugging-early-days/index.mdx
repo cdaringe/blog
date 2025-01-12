@@ -126,12 +126,6 @@ List.prototype.customProperties = function () {
   return this.toArray();
 };
 
-// aSet.constructor.prototype.customProperties = function () {
-//   if (this.dict) {
-//     return Object.values(this.dict.customProperties());
-//   }
-// }
-
 NonEmpty.prototype.customProperties = function () {
   return [this.head, ...this.tail.toArray()];
 };
