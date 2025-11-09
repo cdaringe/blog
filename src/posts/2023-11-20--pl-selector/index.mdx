@@ -84,20 +84,21 @@ Done! In actuality, I
 [have captured a non-trivial subset of properties for many programming languages](https://docs.google.com/spreadsheets/d/1ZVdRbDx5KffYxcecuP6AHXcJWl35nhv9U5f62h6azOU),
 as a sensible substitute. I have enumerated many of the macro capabilities and
 general properties of programming languages, some which are cross-cutting
-between languages, and some which are unique to only a subset of languages. I then have applied
-a score to each intersection of property & language, concluding how well that
-property is manifested in the associated language.
+between languages, and some which are unique to only a subset of languages. I
+then have applied a score to each intersection of property & language,
+concluding how well that property is manifested in the associated language.
 
 **Solutions**
 
-A good solution elegantly fulfills the requirements. We can assess the fulfillment
-of the requirements using evaluation criteria. Elegant is an arbitrary term,
-thus we use domain-specific criteria help yield a score to quantify it.
+A good solution elegantly fulfills the requirements. We can assess the
+fulfillment of the requirements using evaluation criteria. Elegant is an
+arbitrary term, thus we use domain-specific criteria help yield a score to
+quantify it.
 
-I propose the following evaluation criteria for language selection.
-Questions about the specific programming problem at hand must be answered here
-as input into the evaluation model. These inputs work universally across any
-software development team.
+I propose the following evaluation criteria for language selection. Questions
+about the specific programming problem at hand must be answered here as input
+into the evaluation model. These inputs work universally across any software
+development team.
 
 - _Domain_:
   - What domain am I programming in? Desktop gaming, mobile gaming, web UIs, ETL
@@ -120,11 +121,11 @@ There are all sorts of evaluation models applied in different industries.
 For this problem, I
 [recommend a basic linear model](https://github.com/cdaringe/programming-language-selector/blob/b3403e59b45be420e534fae894138c3f85d05d76/src/app/model/basic.ts)
 that quantifies your input values (the decision criteria above) against scored
-programming languages properties. For example, if runtime performance is a paramount value, languages that
-run on the metal (CPU or GPU directly) versus a VM, may receive higher scores.
-However the target domain directly influences this, as some systems,
-such as python, have popular and well understood bindings to linear
-algebra libraries, which may yield adequate performance, even if
+programming languages properties. For example, if runtime performance is a
+paramount value, languages that run on the metal (CPU or GPU directly) versus a
+VM, may receive higher scores. However the target domain directly influences
+this, as some systems, such as python, have popular and well understood bindings
+to linear algebra libraries, which may yield adequate performance, even if
 python is not a fast candidate generally. This model does not represent
 co-variance of language properties against user values, and instead uses
 programming domain associativity to bias that correlation.
@@ -139,8 +140,8 @@ Recap! How does one select a solution (pick a language)?
   discussion or business requirements that may influence the decision one
   direction or the other.
 
-What next? That's up to the decision makers. Software is equal parts art,
-equal parts science. Despite the creative nature of finding a solution, as much
+What next? That's up to the decision makers. Software is equal parts art, equal
+parts science. Despite the creative nature of finding a solution, as much
 objective characterization of the problem-space should be sought by
 participants.
 

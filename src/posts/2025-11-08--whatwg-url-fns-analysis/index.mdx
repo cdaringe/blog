@@ -1,0 +1,179 @@
+---
+title: "On updating URLs: whatwg-url-fns vs the rest"
+slug: /whatwg-url-fns-analysis
+date: "2025-11-08T00:00:00.000Z"
+featured: false
+draft: false
+tags:
+  - programming
+  - typescript
+  - javascript
+  - url
+---
+
+When you're writing web applications, it's extremely common to take a URL and
+transform it in some way. The common approaches have always felt off. Clunky,
+imperative, or deprecated APIs are your only _default_ platform options. That's
+why I built `whatwg-url-fns` - to give myself (and hopefully others) a better
+way to work with URLs.
+
+## What's Wrong with the Standard Approaches?
+
+### [WHATWG URL](https://url.spec.whatwg.org/) Shortcomings
+
+The WHATWG URL constructor works fine for parsing URLs, but transforming them?
+Not so much:
+
+```javascript
+// Want to change the host and add a query param? Prepare for mutation hell
+const url = new URL("https://foo.bar/users?page=1");
+url.hostname = "bar.baz";
+url.origin = "http://bar.qux";
+url.port = "3000";
+url.pathname += "123";
+url.searchParams.set("version", "v1");
+url.searchParams.set("version", "v2");
+url.searchParams.delete("page");
+// https://bar.baz:3000/users123?version=v2
+```
+
+The problems here:
+
+- You're mutating things left and right. Mutation--the root of all evil. If you
+  know, you know.
+- It's imperative step-by-step instructions rather than declaring the
+  transformation you want.
+- Nothing stops you from setting competing fields in one imperative set batch.
+
+### Node.js `url.parse()`/`url.format()`
+
+If the url was first class in the browser AND the module wasn't deprecated,
+honestly, I might still use it. However, neither is the case!
+
+```javascript
+const url = require("url");
+const parsed = url.parse("https://example.com/path");
+const result = url.format({
+  ...parsed,
+  hostname: "newhost.com",
+  search: "?foo=bar",
+});
+```
+
+It's not too bad, but woof--look at that stringy `search`! You're back to
+manually handling query strings, which is hazardous.
+
+## Why whatwg-url-fns is different
+
+### Type Safety That Actually Prevents Bugs
+
+Here's something cool - the library uses TypeScript discriminated unions to make
+certain mistakes literally impossible:
+
+```typescript
+// This won't compile - prevents runtime errors
+transform(url, {
+  origin: "https://example.com",
+  hostname: "different.com", // ❌ TypeScript error: conflicting origin specification
+});
+
+// Instead, you must choose one approach:
+transform(url, { origin: "https://example.com" }); // ✅
+transform(url, { hostname: "example.com" }); // ✅
+```
+
+I haven't seen another URL library that catches this stuff at compile time.
+Pretty neat.
+
+### Everything in One Go
+
+Check out the difference:
+
+```typescript
+// whatwg-url-fns: Single declarative statement
+const newUrl = transform(originalUrl, {
+  hostname: "api-staging.com",
+  port: "3000",
+  pathname: { append: "/v2" },
+  searchParams: {
+    set: { version: "2", env: "staging" },
+    unset: ["debug", "legacy"],
+  },
+});
+
+// Standard approach: Multiple imperative mutations
+const newUrl = new URL(originalUrl);
+newUrl.hostname = "api-staging.com";
+newUrl.port = "3000";
+newUrl.pathname += "/v2";
+newUrl.searchParams.set("version", "2");
+newUrl.searchParams.set("env", "staging");
+newUrl.searchParams.delete("debug");
+newUrl.searchParams.delete("legacy");
+```
+
+The functional version is just... nicer. Easier to read, easier to test, easier
+to modify later.
+
+### Path Handling That Doesn't Fight You
+
+```typescript
+// Intelligent path joining with normalization
+transform("https://api.com/users/", { pathname: { append: "/123/profile" } });
+// Result: https://api.com/users/123/profile (no double slashes)
+
+// Compare to manual string concatenation:
+const manual = new URL(baseUrl);
+manual.pathname =
+  manual.pathname.replace(/\/+$/, "") + "/" + path.replace(/^\/+/, "");
+// Verbose, error-prone, needs edge case handling
+```
+
+### Search Params Done Right
+
+```typescript
+// Atomic, ordered operations with clear semantics
+transform(url, {
+  searchParams: {
+    clear: true, // 1. Clear existing params
+    set: { foo: "bar", baz: "qux" }, // 2. Set new params
+    unset: ["temp"], // 3. Remove specific params
+  },
+});
+
+// Standard approach requires manual coordination:
+url.searchParams.clear();
+url.searchParams.set("foo", "bar");
+url.searchParams.set("baz", "qux");
+url.searchParams.delete("temp");
+```
+
+## When Should You Use This?
+
+### When It's Great
+
+- You're using TypeScript and want the compiler to catch URL mistakes
+- You're doing complex URL transformations with multiple changes
+- Your team likes functional programming patterns
+- You value code readability and maintainability
+
+### When You Probably Don't Need It
+
+- Just changing one property on a URL? The built-in stuff is fine
+- Every byte counts in your bundle? (though 777 bytes gzipped isn't much)
+- Doing extremely high-frequency URL operations
+
+### About Performance
+
+It creates new URL objects instead of mutating existing ones. If you're
+transforming URLs tens of thousands of times per second, the allocation overhead
+might matter.
+
+## Bottom Line
+
+Does it prevent bugs? Yeah. Is it more maintainable? I think so!
+
+The question isn't whether you _can_ manipulate URLs with the standard APIs - of
+course you can. It's whether dealing with mutation and verbose syntax is worth
+it when there's a cleaner option. For me, on TypeScript projects with any kind
+of complex URL handling, it's a no-brainer.
