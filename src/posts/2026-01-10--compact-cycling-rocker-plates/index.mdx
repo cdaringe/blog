@@ -1,0 +1,276 @@
+---
+title: "Compact Cycling Rocker Plates"
+slug: /compact-cycling-rocker-plates
+date: "2026-01-10T00:00:00.000Z"
+featured: false
+draft: false
+tags:
+  - cycling
+  - hardware
+  - CAD
+  - DIY
+embeddedImagesLocal:
+  - grabbsgeo.png
+  - cd-base-rough.png
+  - cd-base-final.png
+  - cd-top-rough.png
+  - cd-top-final.png
+  - cd-assm1.png
+  - cd-assm2.png
+  # milling
+  - milling.jpg
+  - milling2.jpg
+  - milling3.jpg
+  # assembly
+  - lot.jpg
+  - assm.jpg
+  - carriage-assm.jpg
+  - carriage-assm-zoom.png
+  - risers.jpg
+  # final
+  - imnotmad.jpg
+  - cd-poly.jpg
+  - working.webp
+  - alex_final.jpg
+  - blaze.jpg
+---
+
+Rocker plates are a niche accessory for indoor cycling trainers, allowing for a
+more natural riding experience by enabling lateral & fore-aft movement. A few
+friends and I have Zwift subscriptions for the winter (grumble grumble) and
+wanted to build some rocker plates to enhance our rides.
+
+Andrew Grabbs published an excellent article & set of videos on building
+[your own](https://www.andrewgrabbs.com/interests/cycling/we-ride-south-diy-rocker-plate-plans/).
+His plates, however, are _quite_ large! His plate profiles are 5 feet long with
+a nearly 32" width. Our gang has access to a CNC XY Mill table that cuts--at
+max--a 4'x4' profile. Andrew's design simply won't fit.
+
+Here are our objectives:
+
+1. Make awesome rocker plates
+2. Fit within a 4'x4' cutting area
+3. CNC vs manual cutting for fancy shapes and precise tolerances
+4. Support 2 variants: a solid base variant, and a lightweight base variant for
+   different members of the group
+5. Nerd out!
+
+## On adapting the Grabb's design
+
+The easiest course of action to get from zero to millable CAM was to simply
+repurpose Grabb's CAD. Grabb's posted his .dxf files for his plates, which I
+attempted to adapt into OnShape.
+
+TLDR, OnShape's `.dxf` support (and `.d*` formats generally) is _poor_. You can
+get it to work, but great support is behind paid extensions. My first approach
+was importing his content as _dumb geo_, then trying to simplify & adapt the
+individual point geo it to our needs. Because the basic geo has no parametric
+features, it was tedious to modify.
+
+<Img
+  idx={0}
+  clickForFullscreen
+  alt="Grabbs geo"
+  style={{ maxWidth: "300px" }}
+/>
+<Caption>{"Grabbs top plate geo (not for Wahoo Kickr)"}</Caption>
+
+There were enough differences between features that I ultimately decided to
+re-create the profiles from scratch in OnShape.
+
+## Designing from scratch
+
+Getting the basic dimensions we can work with is step one. We know that in a 4x4
+design, we will need every mm of space. Bikes are long, trainers are wide, and a
+4'x4' sheet is neither!
+
+**Length**. We have two macro factors:
+
+1. Primary: bike length. More specifically, axles center-to-center length. Your
+   front tire needs to rest on the plate, with at least some margin for
+   compression and factor of safety.
+2. Secondary: linear rail/rod length. We can dream big and pick a free length
+   here, but rails & rod are independently expensive, so picking something with
+   (giant airquoting here) a "common" length is ideal.
+
+**Width**. Trainer width is the main factor here. We are targeting Wahoo Kickr
+Core trainers, v1 & v2.
+
+Grabb's design already specs a 1400mm rod. This was not too long--about 4.5
+feet. Pretty close to our varying C-C axle lengths between all of our bicycles.
+The bottom plate doesn't care about C-C length at all technically (just the top
+plate), but aesthetically we want some parity.
+
+So, let's rough it in. Like Grabb's, we'll use 4 support clamps total, spaced
+equidistantly from each other. Also, you can see we have our channel profile for
+the inflatable roller. You'll see more why we have inflatable rollers later if
+you didn't checkout Andrew's video from above.
+
+<Img idx={1} clickForFullscreen alt="Rough base profile" />
+<Caption>{"Rough base profile"}</Caption>
+
+A few more holes, cutouts, some chamfers, some rounds, and a big mirror
+operation:
+
+<Img idx={2} clickForFullscreen alt="Final base profile" />
+<Caption>{"Final base"}</Caption>
+
+We're in business! Onto the top plate.
+
+Same process, but on the top we have more interesting features to consider:
+
+1. Bearing mount positions. This is interesting because we want our neutral
+   position to hover nicely over the bottom plate without significant offsets.
+2. Milled grip/handle for lifting the whole assembly.
+3. Tire mount straps slots.
+4. Trainer mount strap slots. The v1 & v2 Kickrs swap from round to squarish
+   bars, and have varying positions & thickness. The differences were not
+   extreme, however. The final milled slots I placed are cross-compatible for
+   both trainers, but not precisely aligned. All of us will use a soft material
+   for straps, so strap slots perfectly oriented about the bars is not strictly
+   necessary.
+
+<Img idx={3} clickForFullscreen alt="Rough top profile" />
+<Caption>{"Rough top profile. I got a little sloppy here :)"}</Caption>
+
+Now with all features polished up:
+
+<Img idx={4} clickForFullscreen alt="Final top profile" />
+<Caption>{"Final top profile. Counterbored holes for all M6 hardware"}</Caption>
+
+Let's see it all together now, sans hardware:
+
+<Img
+  idx={5}
+  clickForFullscreen
+  alt="Assembly & cut area"
+  style={{ maxWidth: "30vw" }}
+/>
+<Caption>
+  {
+    "Top down view of the two plates assembled together, & cut area boundary. Using every mm of available space!"
+  }
+</Caption>
+
+<Img idx={6} clickForFullscreen alt="Assembly & cut area" />
+<Caption>{"Oh ya, this is lookin' good!"}</Caption>
+
+## Machining
+
+We used Fusion 360 to generate our CAM. I don't have images to show. Needless to
+say, CAM is an art. Our programs were fairly straightforward. We bought 4x 4'x8'
+sheets of 3/4" birch, one with low ply for a test run, and 3 with higher ply
+counts for final plates.
+
+Our test run did uncover only one fatal flaw--I had used 45mm spacing for the
+bearings, not 40mm. Easy fix! Everything else was perfect.
+
+<Img
+  idx={7}
+  clickForFullscreen
+  alt="Maching 1"
+  style={{ marginBottom: "1rem" }}
+/>
+<Img
+  idx={8}
+  clickForFullscreen
+  alt="Maching 2"
+  style={{ marginBottom: "1rem" }}
+/>
+<Img idx={9} clickForFullscreen alt="Maching 3" />
+<Caption>
+  {"Happy success! He doesn't even know he's about to hurt his knee :("}
+</Caption>
+
+## Assembly
+
+<Img
+  idx={10}
+  clickForFullscreen
+  alt="Many plats"
+  style={{ marginBottom: "1rem" }}
+/>
+<Img
+  idx={11}
+  clickForFullscreen
+  alt="Assembling away"
+  style={{ marginBottom: "1rem" }}
+/>
+<Img
+  idx={12}
+  clickForFullscreen
+  alt="Carriage assembly"
+  style={{ marginBottom: "1rem" }}
+/>
+<Img
+  idx={13}
+  clickForFullscreen
+  alt="Carriage assembly"
+  style={{ marginBottom: "1rem" }}
+/>
+<Caption style={{ marginBottom: "1rem" }}>
+  {
+    "Two interesting observations. 1) We have collars on the smooth rod to adjust the spring tension, as needed. 2) I 3d printed some PETG bushings for the spring. There's fender washer sized bushing on the bearing face, and a small bushing on the support block face."
+  }
+</Caption>
+<Img
+  idx={14}
+  clickForFullscreen
+  alt="Carriage assembly"
+  style={{ marginBottom: "1rem" }}
+/>
+
+## Final results
+
+The results are in! Apparently these are fun to ride! Let's see them getting
+polished up!
+
+<Img
+  idx={15}
+  clickForFullscreen
+  alt="I'm not mad. You spilled."
+  style={{ marginBottom: "1rem" }}
+/>
+<Caption style={{ marginBottom: "1rem" }}>
+  {"I'm not mad. You're mad. You spilled."}
+</Caption>
+
+<Img
+  idx={16}
+  clickForFullscreen
+  alt="pretty coated plates"
+  style={{ marginBottom: "1rem" }}
+/>
+<Caption style={{ marginBottom: "1rem" }}>
+  {"Fixed. Sanded up & three polyurethane coats later."}
+</Caption>
+
+<Img
+  src="https://static.cdaringe.com/c/pub/img/rocker-plate-working.webp"
+  clickForFullscreen
+  alt="I'm not mad. You spilled."
+  style={{ marginBottom: "1rem" }}
+/>
+<Caption style={{ marginBottom: "1rem" }}>
+  {"Giddy up! Someone hurt their knee though and can't ride yet!"}
+</Caption>
+
+<Img
+  idx={18}
+  clickForFullscreen
+  alt="racing stipe rocker plates"
+  style={{ marginBottom: "1rem" }}
+/>
+<Caption style={{ marginBottom: "1rem" }}>
+  {"Alex's paint jobber looks great!"}
+</Caption>
+
+<Img
+  idx={19}
+  clickForFullscreen
+  alt="blaze orange rocker plates"
+  style={{ marginBottom: "1rem" }}
+/>
+<Caption style={{ marginBottom: "1rem" }}>
+  {"Brent's blaze orange paint jobber looks great too!"}
+</Caption>
