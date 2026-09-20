@@ -95,7 +95,7 @@ Ugh, am I really going to build a keyboard? What a loser! Fine. Just do it.
 
 ### Layout
 
-The super cool [layout editor](https://editor.keyboard-tools.xyz/) is where I started. I was immediately defeated by the fact that it only operates on a square grid. I want that split board! It can represent non grid keys, but there aren't organic editing paths.
+The super cool [KLE layout editor](https://editor.keyboard-tools.xyz/) is where I started. I was immediately defeated by the fact that it only operates on a rectilinear grid. That's right--rectilinear. Go to hell Doug, it's a real word! I want a split board with contours! The KLE can represent rotated keys, but there aren't nice editing mechanisms to get them.
 
 No worries, I'll just update that software deeply to add Bézier curve support!
 
@@ -108,7 +108,7 @@ No worries, I'll just update that software deeply to add Bézier curve support!
   alt="Keyboard layout transformed along Bézier curves"
 />
 
-With a bit of measuring and a bit of math, I was able to use the fullsize keyboard preset, _mutate it_ via curves, and roughly approximate the [Microsoft Ergonomic Layout](https://www.incase.com/collections/keyboards/products/ergonomic-keyboard). It's not perfect, and it took forever to really dial in precise locations that I was content with. I also updated the tool to replay _mutations_ versus just do singular in-place edits, enabling me to roll back my edits, make micro-adjustments to curvature, then re-apply all of my following edits. This was nice, mirrors what 3D CAD programs, and saved me a ton of time. I did about 12 variants before I settled on a layout. I pinged the author of this amazing web tool and have some PRs staged if they are interested in merging these capabilities into trunk. It's a ton of changed code for an admittedly niche feature, so I'm not pressing it. It is available in my fork!
+See? Done! With a bit of measuring and math, I was able to use the fullsize keyboard preset, _mutate it_ via curves, and roughly approximate the [Microsoft Ergonomic Layout](https://www.incase.com/collections/keyboards/products/ergonomic-keyboard). It's not perfect, and it took forever to really dial in precise locations that I was content with. I also updated the tool to replay _mutations_ versus just do singular in-place edits, enabling me to roll back my edits, make micro-adjustments to curvature, then re-apply all of my following edits. This was nice, mirrors what 3D CAD programs, and saved me a ton of time. I did about 12 variants before I settled on a layout. I pinged the author of this amazing web tool and have some PRs staged if they are interested in merging these capabilities into trunk. It's a ton of changed code for an admittedly niche feature, so I'm not pressing it. It is available in my fork!
 
 What makes this tool extremely compelling is:
 

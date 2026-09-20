@@ -1,5 +1,3 @@
-import React from "react";
-
 const ImgLink = ({ src, imgProps, style, ...rest }) => {
   return (
     <a

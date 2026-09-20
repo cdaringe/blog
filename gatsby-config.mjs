@@ -1,7 +1,5 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-
-const { DEBUG } = process.env;
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 

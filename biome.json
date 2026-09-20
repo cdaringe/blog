@@ -20,6 +20,12 @@
       "preset": "recommended",
       "a11y": {
         "useAltText": "off"
+      },
+      "complexity": {
+        "noImportantStyles": "off"
+      },
+      "style": {
+        "noDescendingSpecificity": "off"
       }
     }
   },

@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function SocialIcon({ iconName, iconClass, href, ...rest }) {
   return (
     <a

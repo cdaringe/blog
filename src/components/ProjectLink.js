@@ -1,4 +1,3 @@
-import React from "react";
 import Emoji from "./Emoji.js";
 
 export default function ProjectLink({
@@ -8,22 +7,20 @@ export default function ProjectLink({
   ...unhandled
 }) {
   return (
-    <>
-      <h6>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          {...unhandled}
-          href={dead && githubUrl ? githubUrl : unhandled.href}
-        >
-          {children}
-          {dead && (
-            <Emoji style={{ marginLeft: 4 }} label="project retired">
-              {"\u2620"}
-            </Emoji>
-          )}
-        </a>
-      </h6>
-    </>
+    <h6>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        {...unhandled}
+        href={dead && githubUrl ? githubUrl : unhandled.href}
+      >
+        {children}
+        {dead && (
+          <Emoji style={{ marginLeft: 4 }} label="project retired">
+            {"\u2620"}
+          </Emoji>
+        )}
+      </a>
+    </h6>
   );
 }

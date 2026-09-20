@@ -1,6 +1,5 @@
 import { MDXProvider } from "@mdx-js/react";
 import { graphql } from "gatsby";
-import React from "react";
 import Caption from "./Caption";
 import { FrontmatterProvider } from "./FrontMatterContext";
 import Img from "./Img";

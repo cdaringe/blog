@@ -3,9 +3,10 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
+
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import createPaginatedPages from "gatsby-paginate";
-import path from "path";
-import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -52,7 +53,7 @@ export const createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  const { pages, posts, allNodes } = data.allMdx.edges.reduce(
+  const { posts, allNodes } = data.allMdx.edges.reduce(
     (acc, edge) => {
       const { node } = edge;
       acc.allNodes.push(edge.node);
