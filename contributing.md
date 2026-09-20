@@ -1,8 +1,8 @@
 # contributing
 
-- `npm`
-- `npm develop` to develop
-- `npm build` to build
+- `pnpm install`
+- `pnpm dev` to develop
+- `pnpm build` to build
 - `bash deploy.sh`
 
 this was helpful, i think.

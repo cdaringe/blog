@@ -1,6 +1,6 @@
-import logo from "../images/logo.png";
 import PropTypes from "prop-types";
 import React from "react";
+import logo from "../images/logo.png";
 
 import "./rrssb.css";
 import "./crisp.css";
@@ -8,9 +8,10 @@ import "./gfm.css";
 import "./gfm-hacks.css";
 
 import * as layoutStyles from "./layout.module.css";
-import * as followStyles from "./rrssb-hacks.module.css";
 import ProjectLink from "./ProjectLink";
+import * as followStyles from "./rrssb-hacks.module.css";
 import SocialIcon from "./SocialIcon";
+
 // import { Emoji } from "./Emoji";
 
 // <a target="_blank" href="http://instagram.com/username"><i className="fa fa-instagram fa-2x"></i></a>
@@ -52,9 +53,9 @@ function Layout({ children }) {
               href: "/rss.xml",
               iconName: "fa-rss-square",
             },
-          ].map((props, i) => (
+          ].map((props) => (
             <SocialIcon
-              key={i}
+              key={props.href}
               {...{ ...props, iconClass: followStyles.icon }}
             />
           ))}
@@ -87,24 +88,23 @@ function Layout({ children }) {
               dead: true,
             },
           ],
-        ].map(([href, children, extras], i) =>
+        ].map(([href, children]) =>
           typeof href === "string" ? (
-            <ProjectLink key={i} {...{ href, children }} />
+            <ProjectLink key={href} {...{ href, children }} />
           ) : (
-            <ProjectLink key={i} {...href} />
+            <ProjectLink key={href.githubUrl} {...href} />
           ),
         )}
         <ProjectLink
-          children="red-or-green"
           href="https://redorgreen.org"
           githubUrl="https://github.com/cdaringe/redorgreen"
           dead
-        />
-        <ProjectLink
-          href="https://senorsalsa.org"
-          children="senor-salsa"
-          dead
-        />
+        >
+          red-or-green
+        </ProjectLink>
+        <ProjectLink href="https://senorsalsa.org" dead>
+          senor-salsa
+        </ProjectLink>
       </header>
       <div className={layoutStyles.content}>{children}</div>
       <footer id="footer">

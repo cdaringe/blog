@@ -10,7 +10,7 @@ fnm use
 if [ "$SKIP_BUILD" = "true" ]; then
     echo "Skipping build step"
 else
-    npm run build
+    pnpm build
 fi
 rsync -r --verbose public $HTTP_SERVER_ADMIN@$HTTP_SERVER_IP:$REMOTE_BLOG_DIRNAME
 ssh $HTTP_SERVER_ADMIN@$HTTP_SERVER_IP chown -R $USER:webadmins $REMOTE_BLOG_DIRNAME

@@ -589,9 +589,7 @@ describe("config", () => {
   it(`should accept valid env`, () => {
     expect(() => getConfig(KNOWN_GOOD_ENV)).not.toThrowError();
   });
-  const failureCases = [
-    /* snip */
-  ];
+  const failureCases = [/* snip */];
   failureCases.forEach((opts) =>
     it(`should error on ${opts.case}`, () => {
       const env = { ...KNOWN_GOOD_ENV, ...opts.envPatch };

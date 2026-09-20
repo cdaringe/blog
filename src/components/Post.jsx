@@ -1,15 +1,13 @@
-import { graphql } from "gatsby";
-import Layout from "./Layout";
-import React from "react";
 import { MDXProvider } from "@mdx-js/react";
-import { MDXRenderer } from "gatsby-plugin-mdx";
-
-export { Head } from "./Head";
-
+import { graphql } from "gatsby";
+import React from "react";
 import Caption from "./Caption";
+import { FrontmatterProvider } from "./FrontMatterContext";
 import Img from "./Img";
 import ImgLink from "./ImgLink";
-import { FrontmatterProvider } from "./FrontMatterContext";
+import Layout from "./Layout";
+
+export { Head } from "./Head";
 
 const shortcodes = { Caption, Img, ImgLink };
 
@@ -18,11 +16,7 @@ export default function Post(props) {
   if (typeof data.mdx.frontmatter !== "object") {
     throw new Error("missing frontmatter");
   }
-  const {
-    prettyDate,
-    title = "",
-    embeddedImagesLocal = [],
-  } = data.mdx.frontmatter;
+  const { prettyDate, title = "" } = data.mdx.frontmatter;
   return (
     <Layout>
       <div>
@@ -49,6 +43,7 @@ export const query = graphql`
         prettyDate: date(formatString: "MMMM D, YYYY", locale: "us")
         title
         embeddedImagesLocal {
+          base
           publicURL
           childImageSharp {
             gatsbyImageData

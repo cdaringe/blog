@@ -67,7 +67,7 @@ const mdx = [
 
 // @warn ONLY GENERATES IN PROD BUILDS!
 /** @type {import("gatsby").GatsbyConfig['plugins'][number]} */
-const feed =  {
+const feed = {
   resolve: `gatsby-plugin-feed`,
   options: {
     query: `
@@ -84,14 +84,14 @@ const feed =  {
     feeds: [
       {
         serialize: ({ query: { site, allMdx } }) => {
-          return allMdx.nodes.map(node => {
+          return allMdx.nodes.map((node) => {
             return Object.assign({}, node.frontmatter, {
               title: node.frontmatter.title,
               date: node.frontmatter.date,
               url: site.siteMetadata.siteUrl + node.fields.slug,
               guid: site.siteMetadata.siteUrl + node.fields.slug,
-            })
-          })
+            });
+          });
         },
         query: `
           {
@@ -127,6 +127,7 @@ const feed =  {
 /** @type {import("gatsby").GatsbyConfig} */
 const config = {
   flags: {},
+  jsxRuntime: "automatic",
   siteMetadata: {
     title: " // cdaringe - blog",
     siteUrl: "https://cdaringe.com",

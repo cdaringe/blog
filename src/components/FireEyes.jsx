@@ -1,7 +1,11 @@
 import React from "react";
 
 const Flame = (props) => (
-  <img src="https://static.cdaringe.com/c/pub/img/flame.gif" {...props} />
+  <img
+    alt=""
+    src="https://static.cdaringe.com/c/pub/img/flame.gif"
+    {...props}
+  />
 );
 
 const FireEyes = () => {
@@ -9,11 +13,11 @@ const FireEyes = () => {
   React.useEffect(() => {
     const onsrcoll = () => setIsEyesBurning(true);
     const onscrolled = () => setIsEyesBurning(false);
-    globalThis.addEventListener("scroll", onsrcoll);
-    globalThis.addEventListener("scrollend", onscrolled);
+    window.addEventListener("scroll", onsrcoll);
+    window.addEventListener("scrollend", onscrolled);
     return () => {
-      globalThis.removeEventListener("scroll", onsrcoll);
-      globalThis.removeEventListener("scrollend", onscrolled);
+      window.removeEventListener("scroll", onsrcoll);
+      window.removeEventListener("scrollend", onscrolled);
     };
   }, []);
   return (
@@ -46,6 +50,9 @@ const FireEyes = () => {
           </>
         )}
         <img
+          alt="cdaringe"
+          onBlur={() => setIsEyesBurning(false)}
+          onFocus={() => setIsEyesBurning(true)}
           onMouseOver={() => setIsEyesBurning(true)}
           onMouseOut={() => setIsEyesBurning(false)}
           style={{ borderRadius: 5, boxShadow: "0px 0px 15px 5px #ccc" }}

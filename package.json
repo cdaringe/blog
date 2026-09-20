@@ -3,31 +3,37 @@
   "description": "cdaringe-blog",
   "version": "0.0.1",
   "author": "cdaringe",
+  "packageManager": "pnpm@10.32.1",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
+  },
   "dependencies": {
-    "@mdx-js/react": "^2.0.0",
-    "@parcel/core": "2.8.3",
-    "ajv": "^6.12.6",
-    "gatsby": "^5.12.9",
+    "@mdx-js/react": "^3.1.1",
+    "@parcel/core": "2.16.4",
+    "ajv": "^8.20.0",
+    "gatsby": "^5.16.1",
     "gatsby-paginate": "^1.1.1",
-    "gatsby-plugin-feed": "^5.13.1",
-    "gatsby-plugin-image": "^3.12.3",
-    "gatsby-plugin-manifest": "^5.12.3",
-    "gatsby-plugin-mdx": "^5.12.3",
-    "gatsby-plugin-page-creator": "^5.12.3",
+    "gatsby-plugin-feed": "^5.16.0",
+    "gatsby-plugin-image": "^3.16.0",
+    "gatsby-plugin-manifest": "^5.16.0",
+    "gatsby-plugin-mdx": "^5.16.0",
+    "gatsby-plugin-page-creator": "^5.16.0",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
-    "gatsby-plugin-sharp": "^5.12.3",
-    "gatsby-remark-copy-linked-files": "^6.12.0",
-    "gatsby-remark-images": "^7.12.3",
-    "gatsby-remark-prismjs": "^7.12.0",
-    "gatsby-source-filesystem": "^5.12.1",
-    "gatsby-transformer-remark": "^6.12.3",
-    "gatsby-transformer-sharp": "^5.12.3",
-    "husky": "8.0.3",
-    "lint-staged": "15.1.0",
-    "prettier": "^3.1.0",
-    "prismjs": "^1.29.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "gatsby-plugin-sharp": "^5.16.0",
+    "gatsby-remark-copy-linked-files": "^6.16.0",
+    "gatsby-remark-images": "^7.16.0",
+    "gatsby-remark-prismjs": "^7.16.0",
+    "gatsby-source-filesystem": "^5.16.0",
+    "gatsby-transformer-remark": "^6.16.0",
+    "gatsby-transformer-sharp": "^5.16.0",
+    "husky": "9.1.7",
+    "lint-staged": "17.5.1",
+    "prismjs": "^1.30.0",
+    "prop-types": "^15.8.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
     "react-helmet": "6.1.0"
   },
   "keywords": [
@@ -36,36 +42,31 @@
   ],
   "license": "MIT",
   "scripts": {
-    "prebuild": "npm run clean",
-    "build": "gatsby build",
-    "bd": "DEBUG=1 gatsby build",
-    "_prestart": "npm run clean",
-    "dev": "gatsby clean && gatsby develop",
-    "clean": "gatsby clean",
-    "start": "gatsby develop",
+    "prebuild": "pnpm clean",
+    "build": "NODE_OPTIONS=--disable-warning=DEP0040 gatsby build",
+    "bd": "DEBUG=1 NODE_OPTIONS=--disable-warning=DEP0040 gatsby build",
+    "_prestart": "pnpm clean",
+    "dev": "NODE_OPTIONS=--disable-warning=DEP0040 gatsby develop",
+    "clean": "NODE_OPTIONS=--disable-warning=DEP0040 gatsby clean",
+    "start": "NODE_OPTIONS=--disable-warning=DEP0040 gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write '{src,test,scripts}/**/*.{js,jsx,ts,tsx,md,mdx}' './*.{json,js,ts,md,mdx}'",
-    "lint": "eslint . --ext js,md,mdx && prettier --check '{src,test,scripts}/**/*.{js,jsx,ts,tsx,md,mdx}' './*.{json,js,ts,md,mdx}' --fix"
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky",
+    "format": "biome check --write .",
+    "lint": "biome check --diagnostic-level=error ."
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/arstwtfwfwftwftwtfpdstfrphrphrpghpg"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "{src,test,scripts}/**/*.{js,jsx,ts,tsx}": [
-      "yarn format",
-      "yarn lint",
-      "git add"
-    ]
+    "*.{js,jsx,ts,tsx,json,css}": "biome check --write --no-errors-on-unmatched"
   },
   "devDependencies": {
-    "eslint": "^8.54.0",
-    "eslint-plugin-mdx": "^2.2.0",
-    "eslint-plugin-react": "^7.33.2"
+    "@biomejs/biome": "^2.5.14",
+    "@types/node": "^26.6.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^7.0.2"
   }
 }

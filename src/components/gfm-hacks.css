@@ -2,14 +2,15 @@
   margin-top: revert;
 }
 
-.markdown-body li>p {
+.markdown-body li > p {
   margin-top: 0;
   margin-bottom: 0;
 }
-.markdown-body li+li {
+.markdown-body li + li {
   margin-top: 0;
 }
 
-ul, ol {
+ul,
+ol {
   margin-left: 1.5em;
 }

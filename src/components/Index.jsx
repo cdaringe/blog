@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
-import Layout from "./Layout";
 import React from "react";
+import Layout from "./Layout";
 
 export { Head } from "./Head";
 

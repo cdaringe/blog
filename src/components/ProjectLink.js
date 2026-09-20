@@ -18,11 +18,9 @@ export default function ProjectLink({
         >
           {children}
           {dead && (
-            <Emoji
-              style={{ marginLeft: 4 }}
-              label="project retired"
-              children={"\u2620"}
-            />
+            <Emoji style={{ marginLeft: 4 }} label="project retired">
+              {"\u2620"}
+            </Emoji>
           )}
         </a>
       </h6>
