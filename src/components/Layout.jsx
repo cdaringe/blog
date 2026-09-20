@@ -71,7 +71,7 @@ function Layout({ children }) {
             "https://cdaringe.github.io/programming-language-selector/",
             "pl selector",
           ],
-          [("https://diary.cdaringe.com/", "github diary")],
+          ["https://diary.cdaringe.com/", "github diary"],
           ["https://dvd.js.org?names=han,luke,leia,chewy", "dvd.js.org"],
           ["https://cdaringe.github.io/standup/", "standup"],
           ["https://dino-dna.github.io/donut", "donut"],

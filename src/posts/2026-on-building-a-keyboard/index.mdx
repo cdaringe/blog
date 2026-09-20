@@ -73,7 +73,7 @@ There are seemingly infinite keyboards on the market. Why build one? Just buy! I
 
 It all started with [Dyson Sphere Program](https://en.wikipedia.org/wiki/Dyson_Sphere_Program). It was a relaxing Saturday morning, and I thought, "Let's get some DSP in, now that all games just work™ on Linux!" I booted it up and... uh oh. My [Colemak](https://en.wikipedia.org/wiki/Colemak) keyboard layout strikes again. I forgot to switch to QWERTY before launching the game!
 
-This is a common problem with games. Us non-QWERTY users frequently encounter software that eagerly binds controls to logical keys rather than physical key positions. This is a fatal accessibility mistake: when a game uses WASD for up, left, down, and right, Colemak users instead get up, left, nothing, and down. It's confusing and unusable.
+This is a common problem with games. Us non-QWERTY users frequently encounter software that eagerly binds controls to logical keys rather than physical key positions. This is a fatal accessibility mistake. When a game maps WASD keys into up, left, down, and right motion, Colemak users instead get up, left, **nothing**, and down motion. It's confusing and unusable.
 
 Usually, the fix is to exit the software, switch keyboard layouts, and try again. On this day, that simply didn't work. Somewhere behind the Steam+Proton+game boundary, the controls remained permanently bound to the wrong keys. I tried [all sorts of crazy things](https://github.com/jtroo/kanata), but ultimately the fix was to reinstall the game.
 
@@ -203,7 +203,7 @@ After I designed the case, I 3D printed a few test versions, and also 3D printed
     [11, "Close view of the assembled keyboard board"],
     [12, "Another close view of the assembled keyboard board"]
   ].map(
-      ([idx, alt]) => 
+      ([idx, alt]) =>
         <div key={idx} style={{ flex: "1 1 240px", minWidth: 0, aspectRatio: "1 / 1", display: "flex", overflow: "hidden" }}>
           <Img idx={idx} rounded="sm" shadow clickForFullscreen alt={alt} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         </div>
@@ -232,7 +232,7 @@ I have a bunch of video of all of this, but am sparse in photos. Here's the orde
 
 
 4. Solder all the wires to the screen and connectors.
-5. Do some firmware pre-checks before assembling any further! Does that screen work? 
+5. Do some firmware pre-checks before assembling any further! Does that screen work?
 
 <video
   controls
