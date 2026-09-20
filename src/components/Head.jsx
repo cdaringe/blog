@@ -34,6 +34,7 @@ export function Head() {
         href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         rel="stylesheet"
       />
+      <script defer src="//shymini.cdaringe.com/trace/app_h7ue3vj6.js"></script>
       <html lang="en" />
     </>
   );
