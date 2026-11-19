@@ -9,8 +9,16 @@ import { useFrontmatter } from "./FrontMatterContext";
 const DEFAULT_STYLE = {
   margin: "auto",
   display: "block",
-  width: "50%",
 } satisfies CSSProperties;
+
+const WIDTHS = {
+  md: "50%",
+  lg: "75%",
+  xl: "90%",
+  full: "100%",
+} as const satisfies Record<string, CSSProperties["width"]>;
+
+export type ImgWidth = keyof typeof WIDTHS;
 
 const SUBTLE_SHADOW = "0 4px 16px rgba(0, 0, 0, 0.3)";
 
@@ -47,11 +55,13 @@ export type ImgProps = Omit<
   shadow?: boolean;
   src?: string;
   style?: CSSProperties;
+  /** Width preset; defaults to md (50%). style.width overrides this preset. */
+  width?: ImgWidth;
 };
 
 type InternalImgProps = Omit<
   ImgProps,
-  "basename" | "clickForFullscreen" | "rounded" | "shadow"
+  "basename" | "clickForFullscreen" | "rounded" | "shadow" | "width"
 > & {
   imageIdx?: number;
   imageNode?: ImageNode;
@@ -85,6 +95,7 @@ const Img = ({
   clickForFullscreen,
   rounded,
   shadow,
+  width = "md",
   ...rest
 }: ImgProps) => {
   const fm = useFrontmatter() as Frontmatter;
@@ -112,6 +123,7 @@ const Img = ({
 
   const mergedStyle = {
     ...DEFAULT_STYLE,
+    width: WIDTHS[width],
     ...roundedStyle,
     ...(shadow ? { boxShadow: SUBTLE_SHADOW } : {}),
     ...style,

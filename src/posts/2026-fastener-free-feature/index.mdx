@@ -1,0 +1,113 @@
+---
+title: "Fastener Free Forestboard Features"
+slug: /fastener-free-feature-feature
+date: "2026-11-11T00:00:00.000Z"
+featured: false
+draft: false
+tags:
+  - DIY
+  - hardware
+  - pcb
+  - keyboard
+embeddedImagesLocal:
+  - v0_screen_no_change.jpg
+  - v0_screen_sheet_metal.jpg
+  - v1_clunker.jpg
+  - v2_wrong_clip_position.jpg
+  - v3_alignment.jpg
+  - v4_vs_v5.jpg
+  - onshape_featurescript_final.png
+  - versions_overview.jpg
+---
+
+import v5Video from "./v5-video.mp4";
+
+Last month I published [forestboard](/on-building-a-keyboard), but I wasn't
+entirely happy with it. The screen sat too far recessed beneath the sheet metal
+plate, and was so off center that it just didn't quite look right. Due to
+an electrical problem with the first board, I knew that I was going to build up
+another keyboard anyway, so I decided to take a stab a fixing the screen position.
+
+<Img idx={1} width="lg" rounded="sm" shadow clickForFullscreen alt="Original screen opening in the sheet metal plate" />
+<Caption>{"Sheet metal cutout for the screen."}</Caption>
+
+<br/>
+<Img idx={0} width="xl" rounded="sm" shadow clickForFullscreen alt="Forestboard screen in its original position" />
+<Caption>{"Let's get that screen up and more centered."}</Caption>
+
+Objective: center the screen & tilt it up so it's easier to read. Stretch goal? Use **no fasteners**!
+
+I have a history of building things with an unreasonable number of fasteners.
+Screws, nuts, washers, captured hardware, etc. For this part, I want a snug fit with no extra hardware. 3D printer PLA is
+pliable enough that I should be able to snap everything together. Snap fits
+can be tricky--you need strength and motion in small parts, and those are
+often in conflict. I noticed that OnShape has a FeatureScript MCP server, so
+I figured I'd give it a shot.
+
+## Describe, print, repeat
+
+<Img idx={7} width="xl" rounded="sm" shadow clickForFullscreen alt="Collection of printed screen mount revisions and faceplates" />
+<Caption>{"v1 to v5"}</Caption>
+
+I used Sol 6.1 to help generate each iteration of the mount. I generally wrote no more than
+one paragraph of prompt text per version, with some accompanying measurements.
+ FeatureScript MCP wasn't able to cleanly read existing OnShape
+sketch geometry, which was a bit odd. Nonetheless, the dimensions of the screen PCB
+were readily available, and I slung it the sheet metal dims, and then it was on its merry way.
+
+## v1
+
+<Img idx={2} width="xl" rounded="sm" shadow clickForFullscreen alt="First printed version of the screen mount" />
+<Caption>{"v1 - Quick n Dirty"}</Caption>
+
+The first version is a starting point. Garbage in, garbage out. I really wanted
+to focus on the screen PCB dimensions and the amount of horizontal offset.
+It was clearly much too big!
+
+<Img idx={3} width="lg" rounded="sm" shadow clickForFullscreen alt="Second version of the mount with clips in the wrong position" />
+<Caption>{"V2: clips, but in the wrong place."}</Caption>
+
+I AI slopped the 2nd variant in. This one focused on being lower profile, but the AI ignored the sheet metal dimensions, and I didn't double check it.
+
+<Img idx={4} width="lg" rounded="sm" shadow clickForFullscreen alt="Third version of the mount during alignment checks" />
+<Caption>{"v3 - working on alignment"}</Caption>
+
+The third version was actually pretty decent! However, there were not enough
+features to firmly locate the mount in place. It rotated somewhat freely, so
+I needed to lock it down.
+
+<Img idx={5} width="xl" rounded="sm" shadow clickForFullscreen alt="Fourth and fifth mount versions side by side, with the screen fitted into one" />
+<Caption>{"v5 & v4, respectively."}</Caption>
+
+v4 worked fine, but it the bezel piece was quite flimsy. You can see me pointing to
+the bezel clip on the v5 variant--it's substantially larger. It took almost no force
+to pop the bezel off, making it feel cheap and unfinished. The v5 variant is firm
+and keeps the screen robustly in place.
+
+<Img idx={6} rounded="sm" shadow clickForFullscreen alt="CAD model of the screen mount and faceplate, showing their clips" />
+<Caption>{"v5in Onshape. Plenty of little features for a little screen."}</Caption>
+
+
+All in all, I probably invested only 15 minutes total for the actual *design* and CAD
+aspects of this project. It's staggeringly low. I spent plenty of time
+baby sitting the AI, setting up the prints, and troubleshooting fit issues. However,
+I've never spent so little time on the actual design work. It may seem like
+a simple two parts--but they really are quite complex! It's precision fit geometry
+with rigid components and flexible snaps. I'm still floored on how easy it was.
+Sadly, OnShape gives you only 2.5k total annual API calls. It's absurdly low,
+so I may have try out FreeCAD MCP or even just openscad.
+
+
+<video
+  controls
+  playsInline
+  preload="metadata"
+  aria-label="Version 5 screen mount demonstration"
+  style={{ display: "block", width: "100%", maxHeight: "75dvh", margin: "16px auto" }}
+>
+  <source src={v5Video} type="video/mp4" />
+  Your browser does not support HTML video.
+</video>
+<Caption>{"v5 in action."}</Caption>
+
+More than anything, I'm thrilled with my next forestboard!
