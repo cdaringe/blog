@@ -23,10 +23,10 @@ embeddedImagesLocal:
 import v5Video from "./v5-video.mp4";
 
 Last month I published [forestboard](/on-building-a-keyboard), but I wasn't
-entirely happy with it. The screen sat too far recessed beneath the sheet metal
+entirely happy with it. The screen sat too far below the sheet metal
 plate, and was so off center that it just didn't quite look right. Due to
 an electrical problem with the first board, I knew that I was going to build up
-another keyboard anyway, so I decided to take a stab a fixing the screen position.
+another keyboard anyway, so I decided to take a stab at fixing the screen position.
 
 <Img idx={1} width="lg" rounded="sm" shadow clickForFullscreen alt="Original screen opening in the sheet metal plate" />
 <Caption>{"Sheet metal cutout for the screen."}</Caption>
@@ -79,23 +79,23 @@ I needed to lock it down.
 <Img idx={5} width="xl" rounded="sm" shadow clickForFullscreen alt="Fourth and fifth mount versions side by side, with the screen fitted into one" />
 <Caption>{"v5 & v4, respectively."}</Caption>
 
-v4 worked fine, but it the bezel piece was quite flimsy. You can see me pointing to
+v4 worked fine, but the bezel piece was quite flimsy. You can see me pointing to
 the bezel clip on the v5 variant--it's substantially larger. It took almost no force
 to pop the bezel off, making it feel cheap and unfinished. The v5 variant is firm
 and keeps the screen robustly in place.
 
 <Img idx={6} rounded="sm" shadow clickForFullscreen alt="CAD model of the screen mount and faceplate, showing their clips" />
-<Caption>{"v5in Onshape. Plenty of little features for a little screen."}</Caption>
+<Caption>{"v5 in Onshape. Plenty of little features for a little screen."}</Caption>
 
 
 All in all, I probably invested only 15 minutes total for the actual *design* and CAD
 aspects of this project. It's staggeringly low. I spent plenty of time
-baby sitting the AI, setting up the prints, and troubleshooting fit issues. However,
+babysitting the AI, setting up the prints, and troubleshooting fit issues. However,
 I've never spent so little time on the actual design work. It may seem like
-a simple two parts--but they really are quite complex! It's precision fit geometry
+just two simple parts--but they really are quite complex! It's precision fit geometry
 with rigid components and flexible snaps. I'm still floored on how easy it was.
 Sadly, OnShape gives you only 2.5k total annual API calls. It's absurdly low,
-so I may have try out FreeCAD MCP or even just openscad.
+so I may have to try out FreeCAD MCP or even just openscad.
 
 
 <video
