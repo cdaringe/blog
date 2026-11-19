@@ -21,6 +21,7 @@ embeddedImagesLocal:
 ---
 
 import v5Video from "./v5-video.mp4";
+import v5VideoPoster from "./v5-video-poster.jpg";
 
 Last month I published [forestboard](/on-building-a-keyboard), but I wasn't
 entirely happy with it. The screen sat too far below the sheet metal
@@ -33,16 +34,16 @@ another keyboard anyway, so I decided to take a stab at fixing the screen positi
 
 <br/>
 <Img idx={0} width="xl" rounded="sm" shadow clickForFullscreen alt="Forestboard screen in its original position" />
-<Caption>{"Let's get that screen up and more centered."}</Caption>
+<Caption>{"Let's get that screen titled up and centered."}</Caption>
 
 Objective: center the screen & tilt it up so it's easier to read. Stretch goal? Use **no fasteners**!
 
 I have a history of building things with an unreasonable number of fasteners.
 Screws, nuts, washers, captured hardware, etc. For this part, I want a snug fit with no extra hardware. 3D printer PLA is
 pliable enough that I should be able to snap everything together. Snap fits
-can be tricky--you need strength and motion in small parts, and those are
-often in conflict. I noticed that OnShape has a FeatureScript MCP server, so
-I figured I'd give it a shot.
+can be tricky--you want strength and flexibility in small parts, and those are
+easily in conflict. I noticed that OnShape offers a FeatureScript MCP server, so
+I figured I'd give it a shot too.
 
 ## Describe, print, repeat
 
@@ -50,46 +51,50 @@ I figured I'd give it a shot.
 <Caption>{"v1 to v5"}</Caption>
 
 I used Sol 6.1 to help generate each iteration of the mount. I generally wrote no more than
-one paragraph of prompt text per version, with some accompanying measurements.
- FeatureScript MCP wasn't able to cleanly read existing OnShape
+one paragraph of prompt text per version. FeatureScript MCP wasn't able to cleanly read existing OnShape
 sketch geometry, which was a bit odd. Nonetheless, the dimensions of the screen PCB
-were readily available, and I slung it the sheet metal dims, and then it was on its merry way.
+were readily available and I manually fed Sol the sheet metal dims. It got right to work!
 
 ## v1
 
 <Img idx={2} width="xl" rounded="sm" shadow clickForFullscreen alt="First printed version of the screen mount" />
-<Caption>{"v1 - Quick n Dirty"}</Caption>
+<Caption>{"v1"}</Caption>
 
-The first version is a starting point. Garbage in, garbage out. I really wanted
+The first version was a quick and dirty prototype only. Garbage in, garbage out. I really wanted
 to focus on the screen PCB dimensions and the amount of horizontal offset.
 It was clearly much too big!
 
 <Img idx={3} width="lg" rounded="sm" shadow clickForFullscreen alt="Second version of the mount with clips in the wrong position" />
 <Caption>{"V2: clips, but in the wrong place."}</Caption>
 
-I AI slopped the 2nd variant in. This one focused on being lower profile, but the AI ignored the sheet metal dimensions, and I didn't double check it.
+V2 was focused on being lower profile, but the AI ignored the sheet metal dimensions, and I didn't double check it. Whoops!
 
 <Img idx={4} width="lg" rounded="sm" shadow clickForFullscreen alt="Third version of the mount during alignment checks" />
 <Caption>{"v3 - working on alignment"}</Caption>
 
 The third version was actually pretty decent! However, there were not enough
-features to firmly locate the mount in place. It rotated somewhat freely, so
-I needed to lock it down.
+features to firmly locate the mount in place. It rotated somewhat freely in the sheet metal cavity, so
+I needed to lock it down. Because the of offset aspect of the mount, it made
+for some slightly awkward floating geometry to ensure all edges were firmly located.
+There are some quirky, almost inconspicuous features that actually play a critical
+role. It was a bit fun to see how few features I could use, and how little plastic
+I could get away with. I wasn't looking to save on plastic, but it was super
+convenient to make for nice and speedy prints!
 
 <Img idx={5} width="xl" rounded="sm" shadow clickForFullscreen alt="Fourth and fifth mount versions side by side, with the screen fitted into one" />
 <Caption>{"v5 & v4, respectively."}</Caption>
 
 v4 worked fine, but the bezel piece was quite flimsy. You can see me pointing to
-the bezel clip on the v5 variant--it's substantially larger. It took almost no force
-to pop the bezel off, making it feel cheap and unfinished. The v5 variant is firm
-and keeps the screen robustly in place.
+the bezel clip on the v5 variant--it's substantially larger. The v4 bezel took almost no force
+to pop off, making the whole thing feel cheap and unfinished. The v5 variant
+keeps the screen firmly in place, making it feel like a proper, finished product.
 
-<Img idx={6} rounded="sm" shadow clickForFullscreen alt="CAD model of the screen mount and faceplate, showing their clips" />
+<Img idx={6} with="xl" rounded="sm" shadow clickForFullscreen alt="CAD model of the screen mount and faceplate, showing their clips" />
 <Caption>{"v5 in Onshape. Plenty of little features for a little screen."}</Caption>
 
 
 All in all, I probably invested only 15 minutes total for the actual *design* and CAD
-aspects of this project. It's staggeringly low. I spent plenty of time
+aspects of this project. It's a staggeringly low amount of time. I spent plenty of time
 babysitting the AI, setting up the prints, and troubleshooting fit issues. However,
 I've never spent so little time on the actual design work. It may seem like
 just two simple parts--but they really are quite complex! It's precision fit geometry
@@ -100,6 +105,7 @@ so I may have to try out FreeCAD MCP or even just openscad.
 
 <video
   controls
+  poster={v5VideoPoster}
   playsInline
   preload="metadata"
   aria-label="Version 5 screen mount demonstration"
@@ -110,4 +116,5 @@ so I may have to try out FreeCAD MCP or even just openscad.
 </video>
 <Caption>{"v5 in action."}</Caption>
 
-More than anything, I'm thrilled with my next forestboard!
+More than anything, I'm just very content with my new keyboard. Looks great,
+sounds great, feels great. It's super unique and is purpose built just for me!
